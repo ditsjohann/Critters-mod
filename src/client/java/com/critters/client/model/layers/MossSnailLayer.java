@@ -106,7 +106,7 @@ public final class MossSnailLayer {
         p1.addOrReplaceChild("eyestalk_l", b, PartPose.offsetAndRotation(1.8F, -10.0F, -2.5F, -0.5F, 0.0F, 0.32F));
         b = CubeListBuilder.create();
         b.texOffs(24, 178).addBox(-0.5F, -3.0F, -0.5F, 1.0F, 3.0F, 1.0F);
-        p1.addOrReplaceChild("tentacle_l", b, PartPose.offsetAndRotation(1.6F, -2.5F, -4.5F, 0.9F, 0.5F, 0.0F));
+        p1.addOrReplaceChild("tentacle_l", b, PartPose.offsetAndRotation(1.6F, -2.5F, -4.5F, 0.9F, -0.5F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(136, 138).addBox(-1.0F, -6.0F, -1.0F, 2.0F, 6.0F, 2.0F);
         b.texOffs(140, 153).addBox(-0.5F, -10.5F, -0.5F, 1.0F, 5.0F, 1.0F);
@@ -116,7 +116,7 @@ public final class MossSnailLayer {
         p1.addOrReplaceChild("eyestalk_r", b, PartPose.offsetAndRotation(-1.8F, -10.0F, -2.5F, -0.5F, 0.0F, -0.32F));
         b = CubeListBuilder.create();
         b.texOffs(28, 178).addBox(-0.5F, -3.0F, -0.5F, 1.0F, 3.0F, 1.0F);
-        p1.addOrReplaceChild("tentacle_r", b, PartPose.offsetAndRotation(-1.6F, -2.5F, -4.5F, 0.9F, -0.5F, 0.0F));
+        p1.addOrReplaceChild("tentacle_r", b, PartPose.offsetAndRotation(-1.6F, -2.5F, -4.5F, 0.9F, 0.5F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(84, 125).addBox(-6.5F, -12.5F, -2.0F, 1.0F, 7.0F, 5.0F);
         b.texOffs(172, 107).addBox(-6.5F, -11.5F, -3.5F, 1.0F, 5.0F, 8.0F);

@@ -1,5 +1,6 @@
 package com.critters.block;
 
+import com.critters.entity.ActionHolder;
 import com.critters.registry.CritterSpecies;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -99,6 +100,11 @@ public final class DisplayCritter {
                 y = ty;
                 z = tz;
                 wait = 20 + random.nextInt(aquarium || flies ? 30 : 90);
+                // now and then perform one of its special actions while resting
+                if (entity instanceof ActionHolder holder && random.nextInt(3) == 0) {
+                    int duration = holder.critterActions().playRandomLocal();
+                    wait = Math.max(wait, duration + 5);
+                }
                 pickTarget(random, min, max, floor, ceil);
             } else {
                 x += dx / dist * step;

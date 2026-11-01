@@ -81,7 +81,7 @@ public final class GoliathBeetleLayer {
         PartDefinition p1 = p0.addOrReplaceChild("head", b, PartPose.offsetAndRotation(0.0F, -1.5F, -16.0F, 0.12F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(142, 138).addBox(-0.5F, -0.5F, -4.0F, 1.0F, 1.0F, 4.0F);
-        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(4.0F, -1.2F, -4.5F, -0.2F, 0.6F, 0.0F));
+        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(4.0F, -1.2F, -4.5F, -0.2F, -0.6F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(162, 138).addBox(-0.5F, -1.0F, -3.0F, 1.0F, 2.0F, 3.0F);
         p2.addOrReplaceChild("lamella_l0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, -0.35F, 0.0F));
@@ -93,7 +93,7 @@ public final class GoliathBeetleLayer {
         p2.addOrReplaceChild("lamella_l2", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, 0.35F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(152, 138).addBox(-0.5F, -0.5F, -4.0F, 1.0F, 1.0F, 4.0F);
-        PartDefinition p6 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-4.0F, -1.2F, -4.5F, -0.2F, -0.6F, 0.0F));
+        PartDefinition p6 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-4.0F, -1.2F, -4.5F, -0.2F, 0.6F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(186, 138).addBox(-0.5F, -1.0F, -3.0F, 1.0F, 2.0F, 3.0F);
         p6.addOrReplaceChild("lamella_r0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, 0.35F, 0.0F));
@@ -108,10 +108,10 @@ public final class GoliathBeetleLayer {
         PartDefinition p10 = p1.addOrReplaceChild("horn", b, PartPose.offsetAndRotation(0.0F, -2.0F, -4.5F, -0.7F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(190, 143).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        p10.addOrReplaceChild("horn_tip_2", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, 0.6F, 0.0F));
+        p10.addOrReplaceChild("horn_tip_2", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, -0.6F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(198, 143).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        p10.addOrReplaceChild("horn_tip_0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, -0.6F, 0.0F));
+        p10.addOrReplaceChild("horn_tip_0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -4.0F, 0.0F, 0.6F, 0.0F));
         PartDefinition p13 = root.addOrReplaceChild("leg_l0", CubeListBuilder.create(), PartPose.offsetAndRotation(4.8F, 18.0F, -11.0F, 0.0F, 0.65F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(102, 143).addBox(0.0F, -1.0F, -1.0F, 9.0F, 2.0F, 2.0F);

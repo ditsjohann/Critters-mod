@@ -80,7 +80,7 @@ public final class DungBeetleLayer {
         PartDefinition p1 = p0.addOrReplaceChild("head", b, PartPose.offsetAndRotation(0.0F, -1.5F, -8.5F, 0.12F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(120, 107).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(6.5F, -0.6F, -5.5F, -0.2F, 0.6F, 0.0F));
+        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(6.5F, -0.6F, -5.5F, -0.2F, -0.6F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(80, 94).addBox(-0.5F, -1.0F, -3.0F, 1.0F, 2.0F, 3.0F);
         p2.addOrReplaceChild("lamella_l0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.0F, -0.35F, 0.0F));
@@ -92,7 +92,7 @@ public final class DungBeetleLayer {
         p2.addOrReplaceChild("lamella_l2", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.0F, 0.35F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(0, 111).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        PartDefinition p6 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-6.5F, -0.6F, -5.5F, -0.2F, -0.6F, 0.0F));
+        PartDefinition p6 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-6.5F, -0.6F, -5.5F, -0.2F, 0.6F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(104, 94).addBox(-0.5F, -1.0F, -3.0F, 1.0F, 2.0F, 3.0F);
         p6.addOrReplaceChild("lamella_r0", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.0F, 0.35F, 0.0F));

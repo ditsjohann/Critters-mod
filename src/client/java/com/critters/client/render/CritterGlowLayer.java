@@ -1,6 +1,8 @@
 package com.critters.client.render;
 
 import com.critters.client.model.CritterModel;
+import com.critters.entity.ActionHolder;
+import com.critters.entity.CritterAction;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -30,6 +32,11 @@ public class CritterGlowLayer extends RenderLayer<Mob, CritterModel<Mob>> {
         if (pulse) {
             // slow firefly blink, each one out of sync with the others
             brightness = Mth.clamp(0.35F + 0.65F * Mth.sin(ageInTicks * 0.09F + entity.getId() * 1.7F), 0.08F, 1.0F);
+            if (entity instanceof ActionHolder holder && holder.critterActions().current() == CritterAction.FIREFLY_FLASH) {
+                // courtship signal: three bright flashes
+                float t = holder.critterActions().time(partialTick);
+                brightness = Mth.sin(t * 0.47F) > 0.2F ? 1.0F : 0.1F;
+            }
         }
         int v = (int) (brightness * 255.0F);
         int color = 0xFF000000 | (v << 16) | (v << 8) | v;

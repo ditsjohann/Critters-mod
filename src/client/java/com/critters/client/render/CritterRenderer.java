@@ -21,7 +21,7 @@ public class CritterRenderer extends MobRenderer<Mob, CritterModel<Mob>> {
     private final float modelScale;
 
     public CritterRenderer(EntityRendererProvider.Context context, CritterSpecies species, ModelLayerLocation layer) {
-        super(context, new CritterModel<>(context.bakeLayer(layer), species.family), Math.max(0.15F, species.width * 0.45F));
+        super(context, new CritterModel<>(context.bakeLayer(layer), species), Math.max(0.15F, species.width * 0.45F));
         this.species = species;
         this.texture = CrittersMod.id("textures/entity/" + species.id + ".png");
         this.modelScale = CritterLayers.renderScale(species.id);
@@ -63,5 +63,6 @@ public class CritterRenderer extends MobRenderer<Mob, CritterModel<Mob>> {
             default -> {
             }
         }
+        CritterPoses.apply(poseStack, entity, species, partialTick);
     }
 }

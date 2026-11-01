@@ -153,7 +153,7 @@ public final class RockCrabLayer {
         p33.addOrReplaceChild("tarsus_r3", b, PartPose.offsetAndRotation(-8.7F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0038F));
         b = CubeListBuilder.create();
         b.texOffs(88, 144).addBox(-1.5F, -1.5F, -6.0F, 3.0F, 3.0F, 6.0F);
-        PartDefinition p35 = root.addOrReplaceChild("claw_l", b, PartPose.offsetAndRotation(9.0F, 18.5F, -8.0F, 0.15F, 0.65F, 0.2F));
+        PartDefinition p35 = root.addOrReplaceChild("claw_l", b, PartPose.offsetAndRotation(9.0F, 18.5F, -8.0F, 0.15F, 0.35F, 0.2F));
         b = CubeListBuilder.create();
         b.texOffs(32, 213).addBox(-1.0F, -1.5F, -8.0F, 2.0F, 3.0F, 1.0F);
         b.texOffs(48, 189).addBox(-2.0F, -2.5F, -7.0F, 4.0F, 5.0F, 1.0F);
@@ -171,14 +171,14 @@ public final class RockCrabLayer {
         b.texOffs(38, 213).addBox(-1.0F, -1.5F, 0.0F, 2.0F, 3.0F, 1.0F);
         b.texOffs(76, 169).addBox(-1.0F, 1.0F, -12.0F, 2.0F, 2.0F, 5.0F);
         b.texOffs(88, 213).addBox(-0.5F, 1.5F, -13.0F, 1.0F, 1.0F, 2.0F);
-        PartDefinition p36 = p35.addOrReplaceChild("hand_l", b, PartPose.offsetAndRotation(0.0F, 0.0F, -6.0F, 0.0F, -0.55F, 0.0F));
+        PartDefinition p36 = p35.addOrReplaceChild("hand_l", b, PartPose.offsetAndRotation(0.0F, 0.0F, -6.0F, 0.0F, -0.3F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(90, 169).addBox(-1.0F, -1.0F, -5.0F, 2.0F, 2.0F, 5.0F);
         b.texOffs(60, 217).addBox(-0.5F, -0.5F, -6.0F, 1.0F, 1.0F, 1.0F);
         p36.addOrReplaceChild("pincer_l", b, PartPose.offsetAndRotation(0.0F, -1.5F, -7.5F, 0.12F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(106, 144).addBox(-1.5F, -1.5F, -6.0F, 3.0F, 3.0F, 6.0F);
-        PartDefinition p38 = root.addOrReplaceChild("claw_r", b, PartPose.offsetAndRotation(-9.0F, 18.5F, -8.0F, 0.15F, -0.65F, -0.2F));
+        PartDefinition p38 = root.addOrReplaceChild("claw_r", b, PartPose.offsetAndRotation(-9.0F, 18.5F, -8.0F, 0.15F, -0.35F, -0.2F));
         b = CubeListBuilder.create();
         b.texOffs(44, 213).addBox(-1.0F, -1.5F, -8.0F, 2.0F, 3.0F, 1.0F);
         b.texOffs(68, 189).addBox(-2.0F, -2.5F, -7.0F, 4.0F, 5.0F, 1.0F);
@@ -196,7 +196,7 @@ public final class RockCrabLayer {
         b.texOffs(50, 213).addBox(-1.0F, -1.5F, 0.0F, 2.0F, 3.0F, 1.0F);
         b.texOffs(104, 169).addBox(-1.0F, 1.0F, -12.0F, 2.0F, 2.0F, 5.0F);
         b.texOffs(94, 213).addBox(-0.5F, 1.5F, -13.0F, 1.0F, 1.0F, 2.0F);
-        PartDefinition p39 = p38.addOrReplaceChild("hand_r", b, PartPose.offsetAndRotation(0.0F, 0.0F, -6.0F, 0.0F, 0.55F, 0.0F));
+        PartDefinition p39 = p38.addOrReplaceChild("hand_r", b, PartPose.offsetAndRotation(0.0F, 0.0F, -6.0F, 0.0F, 0.3F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(0, 176).addBox(-1.0F, -1.0F, -5.0F, 2.0F, 2.0F, 5.0F);
         b.texOffs(64, 217).addBox(-0.5F, -0.5F, -6.0F, 1.0F, 1.0F, 1.0F);

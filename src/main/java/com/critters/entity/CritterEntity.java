@@ -2,6 +2,11 @@ package com.critters.entity;
 
 import com.critters.registry.CritterSpecies;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -21,15 +26,102 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Base class for every land critter. Used directly for crawling insects and beetles.
  */
-public class CritterEntity extends PathfinderMob {
+public class CritterEntity extends PathfinderMob implements ActionHolder {
+    private static final EntityDataAccessor<Byte> ACTION = SynchedEntityData.defineId(CritterEntity.class, EntityDataSerializers.BYTE);
+
+    private final ActionController actions = new ActionController(this, ACTION);
 
     public CritterEntity(EntityType<? extends CritterEntity> type, Level level) {
         super(type, level);
+    }
+
+    @Override
+    public ActionController critterActions() {
+        return actions;
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ACTION, (byte) 0);
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (ACTION.equals(key)) {
+            actions.onSynced();
+        }
+    }
+
+    /** May this critter start a special action right now? */
+    protected boolean canStartAction() {
+        return this.onGround() && this.getNavigation().isDone() && this.getTarget() == null
+                && this.getDeltaMovement().horizontalDistanceSqr() < 1.0E-4 && this.hurtTime == 0;
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (!this.level().isClientSide) {
+            actions.serverTick(canStartAction());
+        }
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.level().isClientSide) {
+            actionEffects();
+        }
+    }
+
+    /** Particles that go with some special actions. */
+    private void actionEffects() {
+        CritterAction action = actions.current();
+        int t = (int) actions.time(0.0F);
+        switch (action) {
+            case BOMBARDIER_SPRAY -> {
+                if (t >= 10 && t <= 20) {
+                    Vec3 back = Vec3.directionFromRotation(0.0F, this.yBodyRot).scale(-0.22);
+                    this.level().addParticle(ParticleTypes.WHITE_SMOKE, this.getX() + back.x, this.getY() + 0.1,
+                            this.getZ() + back.z, back.x * 0.3, 0.02, back.z * 0.3);
+                }
+            }
+            case DUNG_DIG, CRAB_DIG -> {
+                if (t % 3 == 0 && t > 8 && t < action.duration - 8) {
+                    BlockState below = this.getBlockStateOn();
+                    if (!below.isAir()) {
+                        Vec3 front = Vec3.directionFromRotation(0.0F, this.yBodyRot).scale(0.15);
+                        this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, below),
+                                this.getX() + front.x, this.getY() + 0.05, this.getZ() + front.z,
+                                (this.random.nextDouble() - 0.5) * 0.1, 0.12, (this.random.nextDouble() - 0.5) * 0.1);
+                    }
+                }
+            }
+            default -> {
+            }
+        }
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || actions.isBusy();
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        boolean hurt = super.hurt(source, amount);
+        if (hurt && !this.level().isClientSide) {
+            actions.cancel();
+        }
+        return hurt;
     }
 
     public static AttributeSupplier.Builder createAttributes(CritterSpecies species) {

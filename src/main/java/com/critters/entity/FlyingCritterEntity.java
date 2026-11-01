@@ -55,6 +55,11 @@ public class FlyingCritterEntity extends CritterEntity implements FlyingAnimal {
     }
 
     @Override
+    protected boolean canStartAction() {
+        return super.canStartAction() && this.onGround();
+    }
+
+    @Override
     public boolean isFlying() {
         return !this.onGround();
     }

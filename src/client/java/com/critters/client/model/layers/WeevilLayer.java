@@ -75,10 +75,10 @@ public final class WeevilLayer {
         PartDefinition p1 = p0.addOrReplaceChild("head", b, PartPose.offsetAndRotation(0.0F, -1.5F, -8.5F, 0.12F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(106, 95).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(1.5F, -1.2F, -3.5F, -0.5F, 0.7F, 0.0F));
+        PartDefinition p2 = p1.addOrReplaceChild("antenna_l", b, PartPose.offsetAndRotation(1.5F, -1.2F, -3.5F, -0.5F, -0.7F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(60, 106).addBox(-0.5F, -0.5F, -1.2F, 1.0F, 1.0F, 1.0F);
-        PartDefinition p3 = p2.addOrReplaceChild("funiculus_l", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.2F, -0.9F, 0.0F));
+        PartDefinition p3 = p2.addOrReplaceChild("funiculus_l", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.2F, 0.9F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(64, 106).addBox(-0.5F, -0.5F, -1.2F, 1.0F, 1.0F, 1.0F);
         PartDefinition p4 = p3.addOrReplaceChild("funiculus_l_1", b, PartPose.offsetAndRotation(0.0F, 0.0F, -1.0F, 0.05F, 0.0F, 0.0F));
@@ -90,10 +90,10 @@ public final class WeevilLayer {
         p5.addOrReplaceChild("funiculus_l_3", b, PartPose.offsetAndRotation(0.0F, 0.0F, -1.0F, 0.05F, 0.0F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(114, 95).addBox(-0.5F, -0.5F, -3.0F, 1.0F, 1.0F, 3.0F);
-        PartDefinition p7 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-1.5F, -1.2F, -3.5F, -0.5F, -0.7F, 0.0F));
+        PartDefinition p7 = p1.addOrReplaceChild("antenna_r", b, PartPose.offsetAndRotation(-1.5F, -1.2F, -3.5F, -0.5F, 0.7F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(68, 106).addBox(-0.5F, -0.5F, -1.2F, 1.0F, 1.0F, 1.0F);
-        PartDefinition p8 = p7.addOrReplaceChild("funiculus_r", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.2F, 0.9F, 0.0F));
+        PartDefinition p8 = p7.addOrReplaceChild("funiculus_r", b, PartPose.offsetAndRotation(0.0F, 0.0F, -3.0F, 0.2F, -0.9F, 0.0F));
         b = CubeListBuilder.create();
         b.texOffs(72, 106).addBox(-0.5F, -0.5F, -1.2F, 1.0F, 1.0F, 1.0F);
         PartDefinition p9 = p8.addOrReplaceChild("funiculus_r_1", b, PartPose.offsetAndRotation(0.0F, 0.0F, -1.0F, 0.05F, 0.0F, 0.0F));

@@ -24,6 +24,34 @@ Behaviour:
 * **Beetles** each have their own look: stag mandibles, a rhinoceros horn, a weevil snout, the dung beetle's shovel head, iridescent jewel colours, and so on.
 * **Fish** swim in schools. Neon tetras form big glowing schools, while bettas live alone.
 
+## Animations
+
+Each critter has a walk (or swim/flight), a looping idle and 2–4 special actions it plays now and then
+while resting. Critters in terrariums and aquariums perform them too.
+
+| Critter | Walk | Idle | Special actions |
+|---|---|---|---|
+| Snails (all 5) | shared crawl: foot ripples, head leads | garden: eyestalks retract in turn · banded: head swings, tentacles flick · moss: drowsy, drooping, sprout sways · amethyst: gazes up, stalks twirl · magma: twitchy, shell heaves | look up, taste the ground, stretch, hide in shell (when hurt) |
+| Fiddler crab | fast sideways scuttle, big claw carried high | small claw scoops food to its mouth | courtship claw wave, threat display, dig, tuck eyes |
+| Red rock crab | sideways scuttle with body roll | claws open and close, eyes swivel | threat display, dig, tuck eyes |
+| Firefly | careful crawl · flight with open wing covers | antennae trace circles | triple courtship flash, wing stretch, groom |
+| Cricket | walk with pumping jump legs · hops | big slow antenna sweeps | chirp (wings raised, buzzing), clean antenna, look around |
+| Ant | quick busy gait, antennae tapping ahead | rapid antenna taps, jaws working | alarm (abdomen raised, jaws open), clean antenna, look around |
+| Ladybug | quick scurry | antenna twitches, gentle rock | play dead (flips on its back), groom, push-up |
+| Stag beetle | heavy deliberate walk | antlers slowly flex | threat (rears up, antlers wide then snap), groom, look around |
+| Rhinoceros beetle | lumbering roll | slow horn nod | horn toss, push-up, look around |
+| Dung beetle | head down, high back legs | front legs scrape | dig (with dirt particles), groom, push-up |
+| Jewel beetle | smooth glide | wide antenna sweeps | shimmer (tilts to flash its colours), groom, look around |
+| Golden scarab | stately, head bobbing | front legs tap in turn | pray (front legs raised), push-up, groom |
+| Bombardier beetle | twitchy stop-start | abdomen raised, antennae flicking | spray (abdomen up, puff of smoke), groom, look around |
+| Weevil | slow high steps | snout bobbing | drill (snout into the ground), look around, push-up |
+| Goliath beetle | heavy giant's walk | breathing, horn sway | rear up waving front legs, push-up, groom |
+| Tiger beetle | very fast long strides, stands tall | alert snap turns, jaw clicks | pounce (lunge + snap), look around, groom |
+| Goldfish | wide slow tail beats | hovering, pectorals fanning | nibble, dart |
+| Betta | flowing undulation | veils billowing | flare (fins and gill covers spread), dart |
+| Neon tetra | quick flicks | twitchy bursts | dart, nibble |
+| Angelfish | slow glide | trailing filaments sway | banking glide, nibble |
+
 ## Catching and displaying
 
 | Item / Block | How to use it |

@@ -528,7 +528,7 @@ def snail(sid):
         st = Part('eyestalk_' + nm, (side * 1.8, -10, -2.5), (-0.5, 0, side * 0.32))
         st.add(rod('y', 0, 6, 2, stalk, sign=-1), rod('y', -5.5, 5, 1, stalk, sign=-1))
         st.add(ellipsoid((0, -11.3, 0), (1.4, 1.5, 1.4), eye, axis='y', step=1))
-        tent = Part('tentacle_' + nm, (side * 1.6, -2.5, -4.5), (0.9, side * 0.5, 0))
+        tent = Part('tentacle_' + nm, (side * 1.6, -2.5, -4.5), (0.9, -side * 0.5, 0))
         tent.add(rod('y', 0, 3, 1, stalk, sign=-1))
         head.add(st, tent)
     # shell on the back, coil axis sideways
@@ -663,9 +663,9 @@ def crab(sid):
         big = kind == 'fiddler' and side < 0
         small = kind == 'fiddler' and side > 0
         clm = claw_mat(kind, big)
-        arm = Part('claw_' + nm, (side * (rx - 4), by + 1, -rz + 2), (0.15, side * 0.65, side * 0.2))
+        arm = Part('claw_' + nm, (side * (rx - 4), by + 1, -rz + 2), (0.15, side * 0.35, side * 0.2))
         arm.add(rod('z', 0, 6, 3 if not small else 2, clm, sign=-1))
-        hand = Part('hand_' + nm, (0, 0, -6), (0, -side * 0.55, 0))
+        hand = Part('hand_' + nm, (0, 0, -6), (0, -side * 0.3, 0))
         if small:
             hand.add(ellipsoid((0, 0, -2), (1.2, 1.5, 2), clm, axis='z', step=1))
             hand.add(rod('z', -3.5, 2, 1, tip, sign=-1))
@@ -738,7 +738,7 @@ def firefly():
     for side in (1, -1):
         head.add(ellipsoid((side * 1.8, -0.2, -1.5), (1.1, 1.2, 1.2), eye_mat(base=0x1A1A1A, compound=True), axis='y', step=1))
     for side, nm in ((1, 'l'), (-1, 'r')):
-        a, _ = chain('antenna_' + nm, 8, 1.2, 1, dark, bend=(0.04, side * 0.06, 0), first_rot=(-0.5, side * 0.45, 0),
+        a, _ = chain('antenna_' + nm, 8, 1.2, 1, dark, bend=(0.04, -side * 0.04, 0), first_rot=(-0.5, -side * 0.45, 0),
                      pivot=(side * 0.8, -0.8, -3))
         head.add(a)
     body.add(head)
@@ -795,7 +795,7 @@ def cricket():
         tg = Part('tegmen_' + nm, (0, -2.6 + (0.2 if side < 0 else 0), -1), (0, 0, side * 0.12))
         tg.add(plane('xz', 0 if side > 0 else -4.5, 0, 0, 4.5, 13, tegmen_mat))
         body.add(tg)
-        ce, _ = chain('cercus_' + nm, 4, 2, 1, dark, bend=(0.05, side * 0.05, 0), first_rot=(-0.1, side * (math.pi - 0.35), 0),
+        ce, _ = chain('cercus_' + nm, 4, 2, 1, dark, bend=(0.05, 0, 0), first_rot=(-0.1, -side * (math.pi - 0.35), 0),
                       pivot=(side * 1.2, 0, 13))
         body.add(ce)
     head = Part('head', (0, -1.0, -6.5), (0.15, 0, 0))
@@ -804,7 +804,7 @@ def cricket():
         head.add(ellipsoid((side * 2.9, -1.2, -3.0), (1.0, 1.4, 1.2), eye_mat(base=0x2A2018, compound=True), axis='y', step=1))
         head.add(rod('y', 2.5, 2, 1, dark, center=(side * 1.2, -5)))  # palps
     for side, nm in ((1, 'l'), (-1, 'r')):
-        a, _ = chain('antenna_' + nm, 14, 1.8, 1, dark, bend=(0.05, side * 0.07, 0), first_rot=(-0.55, side * 0.3, 0),
+        a, _ = chain('antenna_' + nm, 14, 1.8, 1, dark, bend=(0.05, -side * 0.07, 0), first_rot=(-0.55, -side * 0.3, 0),
                      pivot=(side * 1.2, -2.5, -4.5))
         head.add(a)
     body.add(head)
@@ -846,10 +846,10 @@ def ant():
     for side in (1, -1):
         head.add(ellipsoid((side * 2.7, -1.0, -3.2), (0.9, 1.1, 1.1), eye_mat(base=0x2A2626, compound=True), axis='y', step=1))
     for side, nm in ((1, 'l'), (-1, 'r')):
-        mand = Part('mandible_' + nm, (side * 1.4, 1.2, -5.6), (0, -side * 0.6, 0))
-        mand.add(box(-0.5, -0.5, -3, 1, 1, 3, red), box(-side * 1.5 - 0.5, -0.5, -3.5, 2, 1, 1, black))
+        mand = Part('mandible_' + nm, (side * 1.6, 1.2, -5.6), (0, side * 0.1, 0))
+        mand.add(box(-0.5, -0.5, -3, 1, 1, 3, red), box(-side * 0.5 - 0.5, -0.5, -3.5, 1, 1, 1, black))
         head.add(mand)
-        ant_root = Part('antenna_' + nm, (side * 1.2, -2.0, -5.0), (-0.9, side * 0.55, 0))
+        ant_root = Part('antenna_' + nm, (side * 1.2, -2.0, -5.0), (-0.9, -side * 0.55, 0))
         ant_root.add(rod('z', 0, 5, 1, red, sign=-1))
         fun, _ = chain('funiculus_' + nm, 6, 1.1, 1, black, bend=(0.05, 0, 0), first_rot=(1.3, side * 0.2, 0),
                        pivot=(0, 0, -5), club=(3, 1))
@@ -1070,16 +1070,16 @@ def beetle(sid):
     for side, nm in ((1, 'l'), (-1, 'r')):
         pv = (side * (hw / 2 - 1.0), -hh * 0.3, -hl + 0.5)
         if akind == 'club':
-            a, _ = chain('antenna_' + nm, 5, 1.0, 1, legm, bend=(0.1, side * 0.1, 0), first_rot=(-0.3, side * 0.7, 0), pivot=pv, club=(2, 2))
+            a, _ = chain('antenna_' + nm, 5, 1.0, 1, legm, bend=(0.1, -side * 0.08, 0), first_rot=(-0.3, -side * 0.7, 0), pivot=pv, club=(2, 2))
         elif akind == 'filiform':
-            a, _ = chain('antenna_' + nm, alen, 1.6, 1, legm, bend=(0.06, side * 0.05, 0), first_rot=(-0.45, side * 0.45, 0), pivot=pv)
+            a, _ = chain('antenna_' + nm, alen, 1.6, 1, legm, bend=(0.06, -side * 0.03, 0), first_rot=(-0.45, -side * 0.45, 0), pivot=pv)
         elif akind == 'elbow':
-            a = Part('antenna_' + nm, pv, (-0.5, side * 0.7, 0), [rod('z', 0, alen * 0.6, 1, legm, sign=-1)])
-            f, _ = chain('funiculus_' + nm, 4, 1.2, 1, legm, bend=(0.05, 0, 0), first_rot=(0.2, -side * 0.9, 0),
+            a = Part('antenna_' + nm, pv, (-0.5, -side * 0.7, 0), [rod('z', 0, alen * 0.6, 1, legm, sign=-1)])
+            f, _ = chain('funiculus_' + nm, 4, 1.2, 1, legm, bend=(0.05, 0, 0), first_rot=(0.2, side * 0.9, 0),
                          pivot=(0, 0, -alen * 0.6), club=(2, 2))
             a.add(f)
         else:  # lamellate fan
-            a = Part('antenna_' + nm, pv, (-0.2, side * 0.6, 0), [rod('z', 0, alen, 1, legm, sign=-1)])
+            a = Part('antenna_' + nm, pv, (-0.2, -side * 0.6, 0), [rod('z', 0, alen, 1, legm, sign=-1)])
             for k in range(3):
                 a.add(Part('lamella_%s%d' % (nm, k), (0, 0, -alen), (0, side * (k - 1) * 0.35, 0),
                            [box(-0.5, -1, -3, 1, 2, 3, chitin(0x8A6A3A, spec=0.3))]))
@@ -1102,7 +1102,7 @@ def _beetle_extras(kind, head, hw, hh, hl, legm, headm, pm):
     if kind == 'stag':
         jaw = chitin(0x7A3418, spec=0.8, shin=60, var=0.12, freq=0.5, seed=251)
         for side, nm in ((1, 'l'), (-1, 'r')):
-            root, segs = chain('mandible_' + nm, 4, 4.0, 2, jaw, bend=(0, -side * 0.28, 0), first_rot=(-0.2, side * 0.25, 0),
+            root, segs = chain('mandible_' + nm, 4, 4.0, 2, jaw, bend=(0, side * 0.22, 0), first_rot=(-0.2, -side * 0.45, 0),
                                pivot=(side * (hw / 2 - 2), 0.5, -hl))
             segs[1].add(box(-side * 2 - 0.5, -0.5, -2, 2, 1, 1, jaw))       # inner tooth
             segs[3].add(box(-0.5, -2, -3.5, 1, 2, 1, jaw), box(-0.5, 0, -3.5, 1, 1, 1, jaw))  # forked tip
@@ -1127,12 +1127,12 @@ def _beetle_extras(kind, head, hw, hh, hl, legm, headm, pm):
         horn = chitin(0x141010, spec=0.5, shin=40)
         y = Part('horn', (0, -hh / 2, -hl + 0.5), (-0.7, 0, 0), [box(-1, -1, -4, 2, 2, 4, horn)])
         for side in (1, -1):
-            y.add(Part('horn_tip_%d' % (side + 1), (0, 0, -4), (0, side * 0.6, 0), [box(-0.5, -0.5, -3, 1, 1, 3, horn)]))
+            y.add(Part('horn_tip_%d' % (side + 1), (0, 0, -4), (0, -side * 0.6, 0), [box(-0.5, -0.5, -3, 1, 1, 3, horn)]))
         head.add(y)
     elif kind == 'tiger':
         jaw = chitin(0xF4ECD0, spec=0.6, shin=40)
         for side, nm in ((1, 'l'), (-1, 'r')):
-            root, segs = chain('mandible_' + nm, 3, 2.0, 1, jaw, bend=(0, -side * 0.6, 0), first_rot=(0.1, side * 0.35, 0),
+            root, segs = chain('mandible_' + nm, 3, 2.0, 1, jaw, bend=(0, side * 0.45, 0), first_rot=(0.1, -side * 0.3, 0),
                                pivot=(side * 1.8, 0.8, -hl))
             segs[0].add(box(-side * 1 - 0.5, -0.5, -2, 1, 1, 1, jaw))
             head.add(root)

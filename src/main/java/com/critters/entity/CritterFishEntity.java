@@ -1,6 +1,9 @@
 package com.critters.entity;
 
 import com.critters.registry.CritterSpecies;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -10,10 +13,54 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 /** Aquarium fish. Caught with a water bucket like vanilla fish. */
-public class CritterFishEntity extends AbstractSchoolingFish {
+public class CritterFishEntity extends AbstractSchoolingFish implements ActionHolder {
+    private static final EntityDataAccessor<Byte> ACTION = SynchedEntityData.defineId(CritterFishEntity.class, EntityDataSerializers.BYTE);
+
+    private final ActionController actions = new ActionController(this, ACTION);
 
     public CritterFishEntity(EntityType<? extends CritterFishEntity> type, Level level) {
         super(type, level);
+    }
+
+    @Override
+    public ActionController critterActions() {
+        return actions;
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ACTION, (byte) 0);
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (ACTION.equals(key)) {
+            actions.onSynced();
+        }
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (!this.level().isClientSide) {
+            actions.serverTick(this.isInWater() && this.getNavigation().isDone() && this.hurtTime == 0);
+        }
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || actions.isBusy();
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        boolean hurt = super.hurt(source, amount);
+        if (hurt && !this.level().isClientSide) {
+            actions.cancel();
+        }
+        return hurt;
     }
 
     private CritterSpecies species() {
