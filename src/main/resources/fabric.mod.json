@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "critters",
+  "version": "${version}",
+  "name": "Critters",
+  "description": "Snails, crabs, insects, beetles and fish to catch in jars and show off in terrariums and aquariums - build your own little zoo!",
+  "authors": ["ditsjohann"],
+  "contact": {
+    "sources": "https://github.com/ditsjohann/Critters-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/critters/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.critters.CrittersMod"],
+    "client": ["com.critters.client.CrittersClient"]
+  },
+  "accessWidener": "critters.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,11 @@
+accessWidener v2 named
+
+# Register spawn placement rules for our critters
+accessible method net/minecraft/world/entity/SpawnPlacements register (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+
+# Aquarium: find out which fish is inside any (vanilla or modded) fish bucket
+accessible field net/minecraft/world/item/MobBucketItem type Lnet/minecraft/world/entity/EntityType;
+accessible field net/minecraft/world/item/BucketItem content Lnet/minecraft/world/level/material/Fluid;
+
+# Aquarium display: make the display fish think it is swimming so it doesn't flop on its side
+accessible field net/minecraft/world/entity/Entity wasTouchingWater Z
