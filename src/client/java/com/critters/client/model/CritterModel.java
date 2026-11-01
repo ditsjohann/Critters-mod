@@ -18,7 +18,8 @@ import org.jetbrains.annotations.Nullable;
 public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
     private static final float PI = (float) Math.PI;
 
-    private record Leg(ModelPart part, int index, boolean left) {
+    /** part = the leg root (carries the walking swing), femur = optional upper segment (carries the lift). */
+    private record Leg(ModelPart part, @Nullable ModelPart femur, int index, boolean left) {
     }
 
     private final ModelPart root;
@@ -29,20 +30,21 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
     @Nullable private final ModelPart wingL, wingR;
     @Nullable private final ModelPart hindlegL, hindlegR, shinL, shinR;
     @Nullable private final ModelPart clawL, clawR, pincerL, pincerR;
-    @Nullable private final ModelPart tail, finL, finR, dorsal;
+    @Nullable private final ModelPart tail, tailBase, finL, finR, dorsal, anal;
+    @Nullable private final ModelPart elytronL, elytronR, abdomen;
 
     public CritterModel(ModelPart root, Family family) {
         super(RenderType::entityTranslucent);
         this.root = root;
         this.family = family;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             ModelPart l = find("leg_l" + i);
             ModelPart r = find("leg_r" + i);
             if (l != null) {
-                legs.add(new Leg(l, i, true));
+                legs.add(new Leg(l, find("femur_l" + i), i, true));
             }
             if (r != null) {
-                legs.add(new Leg(r, i, false));
+                legs.add(new Leg(r, find("femur_r" + i), i, false));
             }
         }
         body = find("body");
@@ -63,9 +65,14 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
         pincerL = find("pincer_l");
         pincerR = find("pincer_r");
         tail = find("tail_fin");
+        tailBase = find("tail_base");
         finL = find("fin_l");
         finR = find("fin_r");
         dorsal = find("dorsal_fin");
+        anal = find("anal_fin");
+        elytronL = find("elytron_l");
+        elytronR = find("elytron_r");
+        abdomen = find("abdomen");
     }
 
     @Nullable
@@ -91,10 +98,11 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
             float cycle = limbSwing * legSpeed + phase;
             float swing = Mth.sin(cycle) * 0.45F * amount;
             float lift = Math.max(0.0F, Mth.cos(cycle)) * 0.35F * amount;
+            ModelPart lifter = leg.femur != null ? leg.femur : leg.part;
             leg.part.yRot += leg.left ? swing : -swing;
-            leg.part.zRot += leg.left ? -lift : lift;
+            lifter.zRot += leg.left ? -lift : lift;
             if (family == Family.FLYER && airborne) {
-                leg.part.zRot += leg.left ? 0.5F : -0.5F; // legs dangle while flying
+                lifter.zRot += leg.left ? 0.6F : -0.6F; // legs dangle while flying
             }
         }
 
@@ -116,6 +124,17 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
             eyestalkL.zRot += Mth.sin(ageInTicks * 0.05F) * 0.1F;
             eyestalkR.xRot += Mth.sin(ageInTicks * 0.07F + 2.0F) * 0.15F;
             eyestalkR.zRot -= Mth.sin(ageInTicks * 0.05F + 2.0F) * 0.1F;
+        }
+
+        // ---- wing covers open in flight ----
+        if (elytronL != null && elytronR != null && airborne) {
+            elytronL.zRot -= 0.85F;
+            elytronR.zRot += 0.85F;
+            elytronL.xRot -= 0.25F;
+            elytronR.xRot -= 0.25F;
+        }
+        if (abdomen != null) {
+            abdomen.xRot += Mth.sin(ageInTicks * 0.15F) * 0.04F; // breathing
         }
 
         // ---- wings ----
@@ -161,8 +180,15 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
         // ---- fish ----
         if (family == Family.FISH) {
             float strength = entity.isInWater() ? 1.0F : 1.7F;
+            float sway = Mth.sin(0.6F * ageInTicks);
+            if (tailBase != null) {
+                tailBase.yRot = -strength * 0.22F * sway;
+            }
             if (tail != null) {
-                tail.yRot = -strength * 0.45F * Mth.sin(0.6F * ageInTicks);
+                tail.yRot = -strength * 0.35F * Mth.sin(0.6F * ageInTicks - 0.8F);
+            }
+            if (anal != null) {
+                anal.zRot += Mth.sin(ageInTicks * 0.3F) * 0.05F;
             }
             if (finL != null && finR != null) {
                 finL.zRot += Mth.sin(ageInTicks * 0.35F) * 0.25F;
@@ -185,10 +211,10 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
             }
             if (shell != null) {
                 if (hiding) {
-                    shell.y += 2.0F;
+                    shell.y += 6.0F;
                     shell.xRot = 0.0F;
                 } else {
-                    shell.y += Mth.sin(limbSwing * 0.8F) * 0.2F * amount;
+                    shell.y += Mth.sin(limbSwing * 0.8F) * 0.6F * amount;
                 }
             }
         }

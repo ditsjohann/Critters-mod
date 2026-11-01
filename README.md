@@ -2,10 +2,9 @@
 
 A Fabric mod for **Minecraft 1.21.1** that adds 24 small creatures. You catch them in jars and keep them in terrariums and aquariums, so you can build your own zoo.
 
-![Snails, crabs and insects](docs/snails_and_crabs.png)
+![Snails and crabs](docs/snails_and_crabs.png)
 ![Beetles](docs/beetles.png)
-![Terrariums, an aquarium, and snails climbing out of a pit leaving slime trails](docs/terrarium_and_slime_trails.png)
-![Fish](docs/fish.png)
+![Terrariums, aquarium and fish](docs/terrarium_and_aquarium.png)
 
 ## The critters
 
@@ -77,19 +76,35 @@ src/main/java/com/critters/
   item/CritterJarItem        catching and releasing
 src/client/java/com/critters/client/
   model/CritterModel         one animated model class for every critter
-  model/CritterLayers        GENERATED model geometry (do not edit by hand)
+  model/CritterLayers        GENERATED dispatcher; model/layers/* GENERATED geometry (do not edit)
   render/                    entity renderer, glow layer, terrarium/aquarium renderer
 tools/
-  critter_models.py          model shapes and paint styles for every critter
-  generate_assets.py         generates CritterLayers.java, all textures, models, lang, recipes, loot
+  critter_models.py          model geometry + procedural materials for every critter
+  shading.py                 numpy noise, material helpers and baked lighting
+  model_painter.py           UV packing, 3D texture painting, Java model code generation
+  generate_assets.py         runs everything + item/block textures, models, lang, recipes, loot
 ```
+
+### How the models and textures are made
+
+The critters are authored at 5x vanilla resolution (80 units per block) and drawn at 1/5 scale. That is
+where their fine detail comes from.
+
+* **Curvature**: domes, shells, bodies and eyes are stacked, rounded slices that approximate ellipsoids.
+* **Anatomy**: legs are jointed (femur, tibia, tarsus) and antennae are segmented chains. Fins and wings
+  are flat cards with alpha-cut silhouettes, veins and fin rays.
+* **Textures**: every texel is mapped back to the 3D point it covers. Materials are procedural functions
+  of that point: noise, cellular patterns, spiral shells, scales, chitin pits and grooves, iridescence,
+  lava cracks. Patterns therefore flow seamlessly across all the small cubes.
+* **Lighting**: shading uses the smooth normal of the shape each cube approximates, plus specular gloss.
+  It also compensates for Minecraft's own per-face entity lighting, so curved surfaces don't look terraced.
 
 ### Changing or adding critters
 
 The models and textures are generated together, so the texture UVs always match the model:
 
 1. Edit the critter's shape or colours in `tools/critter_models.py`. For a new critter, also add it to `SPECIES` in `tools/generate_assets.py`, to `CritterSpecies.java` and to `ModSpawns.java`.
-2. Run `python3 tools/generate_assets.py`. It needs Pillow.
+2. Run `python3 tools/generate_assets.py`. It needs Pillow and numpy.
 3. Run `./gradlew build`.
 
 ## License
