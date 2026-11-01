@@ -6,6 +6,7 @@ import com.critters.entity.CritterEntity;
 import com.critters.entity.CritterFishEntity;
 import com.critters.entity.FlyingCritterEntity;
 import com.critters.entity.HoppingCritterEntity;
+import com.critters.entity.SeaCrawlerEntity;
 import com.critters.entity.SnailEntity;
 import com.critters.item.CritterJarItem;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -19,6 +20,8 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.item.Item;
@@ -50,10 +53,20 @@ public final class ModEntities {
             }
             species.bind(type, egg, container);
 
-            FabricDefaultAttributeRegistry.register(type,
-                    species.isAquatic() ? AbstractFish.createAttributes() : CritterEntity.createAttributes(species));
+            FabricDefaultAttributeRegistry.register(type, attributes(species));
             registerPlacement(species, type);
         }
+    }
+
+    private static AttributeSupplier.Builder attributes(CritterSpecies species) {
+        if (species.family.isFishLike()) {
+            AttributeSupplier.Builder fish = AbstractFish.createAttributes().add(Attributes.MAX_HEALTH, species.health);
+            if (species.speed > 0) {
+                fish.add(Attributes.MOVEMENT_SPEED, species.speed);   // slow drifters: jellyfish, seahorse...
+            }
+            return fish;
+        }
+        return CritterEntity.createAttributes(species);
     }
 
     private static EntityType<? extends Mob> buildType(CritterSpecies species) {
@@ -61,9 +74,10 @@ public final class ModEntities {
             case SNAIL -> EntityType.Builder.<SnailEntity>of(SnailEntity::new, MobCategory.AMBIENT);
             case CRAB -> EntityType.Builder.<CrabEntity>of(CrabEntity::new, MobCategory.AMBIENT);
             case FLYER -> EntityType.Builder.<FlyingCritterEntity>of(FlyingCritterEntity::new, MobCategory.AMBIENT);
-            case HOPPER -> EntityType.Builder.<HoppingCritterEntity>of(HoppingCritterEntity::new, MobCategory.AMBIENT);
-            case CRAWLER, BEETLE -> EntityType.Builder.<CritterEntity>of(CritterEntity::new, MobCategory.AMBIENT);
-            case FISH -> EntityType.Builder.<CritterFishEntity>of(CritterFishEntity::new, MobCategory.WATER_AMBIENT);
+            case HOPPER, FROG -> EntityType.Builder.<HoppingCritterEntity>of(HoppingCritterEntity::new, MobCategory.AMBIENT);
+            case CRAWLER, BEETLE, AMPHIBIAN -> EntityType.Builder.<CritterEntity>of(CritterEntity::new, MobCategory.AMBIENT);
+            case FISH, SWIMMER -> EntityType.Builder.<CritterFishEntity>of(CritterFishEntity::new, MobCategory.WATER_AMBIENT);
+            case SEA_CRAWLER -> EntityType.Builder.<SeaCrawlerEntity>of(SeaCrawlerEntity::new, MobCategory.WATER_AMBIENT);
         };
         builder.sized(species.width, species.height)
                 .eyeHeight(species.height * 0.6F)
@@ -77,8 +91,17 @@ public final class ModEntities {
     @SuppressWarnings("unchecked")
     private static void registerPlacement(CritterSpecies species, EntityType<? extends Mob> type) {
         switch (species.family) {
-            case FISH -> placement((EntityType<CritterFishEntity>) type, SpawnPlacementTypes.IN_WATER,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+            case FISH, SWIMMER -> {
+                if (species.isDeepSea()) {
+                    placement((EntityType<CritterFishEntity>) type, SpawnPlacementTypes.IN_WATER,
+                            Heightmap.Types.OCEAN_FLOOR, CritterFishEntity::checkDeepWaterSpawnRules);
+                } else {
+                    placement((EntityType<CritterFishEntity>) type, SpawnPlacementTypes.IN_WATER,
+                            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+                }
+            }
+            case SEA_CRAWLER -> placement((EntityType<SeaCrawlerEntity>) type, SpawnPlacementTypes.IN_WATER,
+                    Heightmap.Types.OCEAN_FLOOR, SeaCrawlerEntity::checkSeaFloorSpawnRules);
             case FLYER -> placement((EntityType<CritterEntity>) type, SpawnPlacementTypes.NO_RESTRICTIONS,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FlyingCritterEntity::checkFireflySpawnRules);
             default -> placement((EntityType<CritterEntity>) type, SpawnPlacementTypes.ON_GROUND,

@@ -47,6 +47,13 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
     private final ModelPart hindlegL, hindlegR, shinL, shinR;
     private final ModelPart clawL, clawR, handL, handR, pincerL, pincerR;
     private final ModelPart tailBase, tail, finL, finR, dorsal, anal, pelvicL, pelvicR;
+    private final ModelPart jaw, lure, nose, earL, earR, rhinophoreL, rhinophoreR, gills, footL, footR;
+    private final List<ModelPart> chainSegs = new ArrayList<>();    // tail_base_N / lure segments
+    private final List<ModelPart> arms = new ArrayList<>();         // octopus arm roots
+    private final List<List<ModelPart>> starArms = new ArrayList<>();
+    private final List<ModelPart> tentacles = new ArrayList<>();    // jellyfish tentacles + oral arms
+    private final List<ModelPart> spines = new ArrayList<>();
+    private final List<ModelPart> gillList = new ArrayList<>();
 
     public CritterModel(ModelPart root, CritterSpecies species) {
         super(RenderType::entityTranslucent);
@@ -102,6 +109,61 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
         anal = find("anal_fin");
         pelvicL = find("pelvic_l");
         pelvicR = find("pelvic_r");
+        jaw = find("jaw");
+        lure = find("lure");
+        nose = find("nose");
+        earL = find("ear_l");
+        earR = find("ear_r");
+        rhinophoreL = find("rhinophore_l");
+        rhinophoreR = find("rhinophore_r");
+        gills = find("gills");
+        footL = find("foot_l");
+        footR = find("foot_r");
+        for (int i = 1; i < 10; i++) {
+            ModelPart seg = find("tail_base_" + i);
+            if (seg != NONE) {
+                chainSegs.add(seg);
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            ModelPart arm = find("arm_" + i);
+            if (arm == NONE) {
+                break;
+            }
+            arms.add(arm);
+            List<ModelPart> segs = new ArrayList<>();
+            for (int k = 0; k < 4; k++) {
+                ModelPart seg = find("arm_" + i + "_" + k);
+                if (seg != NONE) {
+                    segs.add(seg);
+                }
+            }
+            starArms.add(segs);
+        }
+        for (int i = 0; i < 16; i++) {
+            ModelPart t = find("tentacle_" + i);
+            if (t != NONE) {
+                tentacles.add(t);
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            ModelPart o = find("oral_" + i);
+            if (o != NONE) {
+                tentacles.add(o);
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            ModelPart sp = find("spine_" + i);
+            if (sp != NONE) {
+                spines.add(sp);
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            ModelPart g = find("gill_" + i);
+            if (g != NONE) {
+                gillList.add(g);
+            }
+        }
     }
 
     private ModelPart find(String name) {
@@ -194,7 +256,14 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
             case HOPPER -> cricket(limbSwing, move, idle, age, airborne, action, at, e);
             case CRAWLER -> ant(limbSwing, move, idle, age, action, at, e);
             case BEETLE -> beetle(limbSwing, move, idle, age, action, at, e);
-            case FISH -> fish(entity, limbSwing, move, idle, age, action, at, e);
+            case FISH -> {
+                fish(entity, limbSwing, move, idle, age, action, at, e);
+                seaFish(entity, move, idle, age, action, at, e);
+            }
+            case SWIMMER -> swimmer(move, idle, age, action, at, e);
+            case SEA_CRAWLER -> seaCrawler(limbSwing, move, idle, age, action, at, e);
+            case FROG -> frog(entity, limbSwing, move, idle, age, action, at, e);
+            case AMPHIBIAN -> salamander(limbSwing, move, idle, age, action, at, e);
         }
     }
 
@@ -684,6 +753,26 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
                 freq = 1.1F;
                 amp = 0.35F;
             }
+            case CLOWNFISH -> {
+                freq = 0.75F;
+                amp = 0.45F;
+            }
+            case LIONFISH -> {
+                freq = 0.22F;
+                amp = 0.2F;
+            }
+            case SEAHORSE -> {
+                freq = 0.2F;
+                amp = 0.08F;
+            }
+            case BLOBFISH -> {
+                freq = 0.18F;
+                amp = 0.25F;
+            }
+            case ANGLERFISH -> {
+                freq = 0.3F;
+                amp = 0.3F;
+            }
             default -> {
                 freq = 0.35F;
                 amp = 0.3F;
@@ -759,6 +848,267 @@ public class CritterModel<T extends Entity> extends HierarchicalModel<T> {
                 anal.xRot += 0.12F * e;
                 tail.yRot += sin(at * 0.15F) * 0.2F * e;
             }
+            default -> {
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // SECOND WAVE: more fish
+    // ------------------------------------------------------------------
+
+    private void seaFish(T entity, float move, float idle, float age, CritterAction action, float at, float e) {
+        switch (species) {
+            case CLOWNFISH -> {
+                // busy little waggle while hovering, pectorals buzzing
+                tailBase.yRot += sin(age * 0.6F) * 0.15F * idle;
+                finL.yRot += sin(age * 1.3F) * 0.45F;
+                finR.yRot -= sin(age * 1.3F) * 0.45F;
+            }
+            case LIONFISH -> {
+                // hangs in the water slowly opening and closing its huge fans
+                float fan = sin(age * 0.05F);
+                finL.yRot += fan * 0.3F;
+                finR.yRot -= fan * 0.3F;
+                for (int i = 0; i < spines.size(); i++) {
+                    spines.get(i).xRot += sin(age * 0.07F + i * 0.4F) * 0.05F;
+                }
+            }
+            case SEAHORSE -> {
+                // upright, dorsal fin a blur, tail slowly coiling and uncoiling
+                dorsal.yRot += sin(age * 2.6F) * 0.45F;
+                finL.yRot += sin(age * 2.2F) * 0.4F;
+                finR.yRot -= sin(age * 2.2F) * 0.4F;
+                head.yRot += sin(age * 0.04F) * 0.3F * idle;
+                for (ModelPart seg : chainSegs) {
+                    seg.xRot += sin(age * 0.05F) * 0.06F;
+                }
+            }
+            case BLOBFISH -> {
+                // a sagging, wobbling blob that slowly "breathes"
+                float breathe = sin(age * 0.05F);
+                body.yScale = 1.0F + breathe * 0.03F * idle;
+                body.xScale = 1.0F - breathe * 0.02F * idle;
+                nose.xRot += sin(age * 0.09F) * 0.06F;
+                jaw.y += Math.max(0.0F, breathe) * 0.5F;
+            }
+            case ANGLERFISH -> {
+                // the glowing lure dangles and sways in front of the gaping mouth
+                lure.xRot += sin(age * 0.08F) * 0.15F;
+                lure.zRot += sin(age * 0.05F) * 0.12F;
+                jaw.xRot += (0.1F + Math.max(0.0F, sin(age * 0.06F)) * 0.12F) * idle;
+            }
+            default -> {
+            }
+        }
+        switch (action) {
+            case CLOWN_WIGGLE -> {
+                tailBase.yRot += sin(at * 1.6F) * 0.5F * e;
+                tail.yRot += sin(at * 1.6F - 0.8F) * 0.6F * e;
+            }
+            case LIONFISH_FAN -> {
+                finL.yRot += 0.45F * e;
+                finR.yRot -= 0.45F * e;
+                finL.xRot -= 0.2F * e;
+                finR.xRot -= 0.2F * e;
+                for (ModelPart spine : spines) {
+                    spine.xRot -= 0.3F * e;
+                }
+            }
+            case SEAHORSE_CURL -> {
+                for (ModelPart seg : chainSegs) {
+                    seg.xRot -= 0.25F * e;
+                }
+                head.xRot += 0.15F * e;
+            }
+            case SEAHORSE_BOW -> head.xRot += Math.abs(sin(at * 0.14F)) * 0.45F * e;
+            case BLOB_SIGH -> {
+                float sag = sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+                body.yScale -= 0.12F * sag;
+                body.xScale += 0.08F * sag;
+                body.zScale += 0.04F * sag;
+                nose.xRot += 0.35F * sag;
+                jaw.y += 1.0F * sag;
+            }
+            case ANGLER_LURE -> {
+                lure.xRot += sin(at * 0.3F) * 0.4F * e;
+                lure.zRot += cos(at * 0.3F) * 0.25F * e;
+                jaw.xRot += 0.2F * e;
+            }
+            case ANGLER_SNAP -> {
+                float open = at < 14 ? Mth.clamp(at / 8.0F, 0.0F, 1.0F) : Mth.clamp(1.0F - (at - 14) / 2.0F, 0.0F, 1.0F);
+                jaw.xRot += 0.95F * open;
+                head.xRot -= 0.15F * open;
+            }
+            default -> {
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // SWIMMERS: jellyfish, dumbo octopus
+    // ------------------------------------------------------------------
+
+    private void swimmer(float move, float idle, float age, CritterAction action, float at, float e) {
+        if (species == CritterSpecies.JELLYFISH) {
+            float rate = 0.18F + 0.17F * move + (action == CritterAction.JELLY_PULSE ? 0.25F * e : 0.0F);
+            float strength = 0.12F + (action == CritterAction.JELLY_PULSE ? 0.12F * e : 0.0F);
+            float pulse = Math.max(0.0F, sin(age * rate));
+            body.yScale = 1.0F - pulse * strength;
+            body.xScale = 1.0F + pulse * strength * 0.6F;
+            body.zScale = 1.0F + pulse * strength * 0.6F;
+            for (int i = 0; i < tentacles.size(); i++) {
+                ModelPart t = tentacles.get(i);
+                t.xRot += sin(age * 0.07F + i * 0.7F) * 0.12F + pulse * 0.1F;
+                t.zRot += cos(age * 0.06F + i * 0.5F) * 0.1F;
+            }
+            if (action == CritterAction.JELLY_SPIN) {
+                body.yRot += at * 0.05F * e;
+            }
+        } else {
+            // dumbo octopus: flaps its "ears" to swim, arms trailing like a little skirt
+            float flapRate = 0.2F + 0.3F * move + (action == CritterAction.OCTO_FLAP ? 0.35F * e : 0.0F);
+            float flap = sin(age * flapRate) * (0.45F + 0.25F * move);
+            earL.zRot += flap;
+            earR.zRot -= flap;
+            for (int i = 0; i < arms.size(); i++) {
+                ModelPart arm = arms.get(i);
+                arm.xRot += (sin(age * 0.08F + i * 0.8F) * 0.12F - 0.25F * move) ;
+                if (action == CritterAction.OCTO_UMBRELLA) {
+                    arm.xRot += 0.75F * e;      // arms flared up like an umbrella
+                }
+            }
+            body.xRot += 0.15F * move;
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // SEA FLOOR CRAWLERS: sea star, nudibranch
+    // ------------------------------------------------------------------
+
+    private void seaCrawler(float ls, float move, float idle, float age, CritterAction action, float at, float e) {
+        if (species == CritterSpecies.SEA_STAR) {
+            for (int i = 0; i < starArms.size(); i++) {
+                List<ModelPart> segs = starArms.get(i);
+                // walking: a slow ripple of tube feet down each arm; idle: arm tips lift one by one
+                float lift = Math.max(0.0F, sin(age * 0.03F + i * 1.26F)) * 0.12F * idle;
+                for (int k = 0; k < segs.size(); k++) {
+                    ModelPart seg = segs.get(k);
+                    seg.xRot -= lift * (k > 0 ? 1.0F : 0.0F);
+                    seg.xRot += sin(ls * 0.6F + i + k * 0.5F) * 0.04F * move;
+                    if (action == CritterAction.STAR_CURL && k > 0) {
+                        seg.xRot -= 0.22F * e;
+                    }
+                    if (action == CritterAction.STAR_WAVE && i == 0) {
+                        seg.xRot -= (0.3F + sin(at * 0.3F) * 0.12F) * e;
+                    }
+                }
+            }
+        } else {
+            // nudibranch: muscular crawl like a snail, sensory horns swaying, gill plume breathing
+            body.zScale = 1.0F + sin(ls * 0.8F) * 0.07F * move;
+            rhinophoreL.xRot += sin(age * 0.07F) * 0.15F;
+            rhinophoreR.xRot += sin(age * 0.07F + 1.2F) * 0.15F;
+            rhinophoreL.zRot += cos(age * 0.05F) * 0.1F * idle;
+            rhinophoreR.zRot -= cos(age * 0.05F + 0.5F) * 0.1F * idle;
+            float breathe = 1.0F + sin(age * 0.12F) * 0.08F;
+            gills.xScale = breathe;
+            gills.yScale = breathe;
+            gills.zScale = breathe;
+            if (action == CritterAction.SLUG_RHINO) {
+                float tuck = sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+                rhinophoreL.yScale = 1.0F - 0.6F * tuck;
+                rhinophoreR.yScale = 1.0F - 0.6F * tuck;
+            }
+            if (action == CritterAction.SLUG_GILLS) {
+                for (int i = 0; i < gillList.size(); i++) {
+                    gillList.get(i).zRot += (i - 3) * 0.12F * e;
+                    gillList.get(i).xRot += sin(at * 0.5F + i) * 0.15F * e;
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // AMPHIBIANS
+    // ------------------------------------------------------------------
+
+    private void frog(T entity, float ls, float move, float idle, float age, CritterAction action, float at, float e) {
+        boolean airborne = !entity.onGround() && !entity.isInWater();
+        boolean swimming = entity.isInWater();
+        if (species == CritterSpecies.RAIN_FROG) {
+            // waddles on its stubby legs (the body rocks in the renderer), slow round breathing
+            gait(ls, move, 2.2F, 0.35F, 0.0F, false, 1.0F);
+            float breathe = 1.0F + sin(age * 0.08F) * 0.025F * idle;
+            body.xScale = breathe;
+            body.zScale = breathe;
+        } else {
+            gait(ls, move, 2.0F, 0.35F, 0.3F, false, 1.0F);
+            float push = sin(ls * 2.0F) * 0.2F * move;
+            hindlegL.yRot += push;
+            hindlegR.yRot += push;
+            if (airborne || swimming) {
+                // legs kicked straight out behind for the leap / stroke
+                float kick = swimming ? (0.5F + 0.5F * sin(age * 0.5F)) : 1.0F;
+                hindlegL.yRot += 0.75F * kick;
+                hindlegR.yRot -= 0.75F * kick;
+                shinL.yRot -= 0.5F * kick;
+                shinR.yRot += 0.5F * kick;
+                footL.yRot += 0.5F * kick;
+                footR.yRot -= 0.5F * kick;
+            }
+            // idle: rapid throat breathing
+            head.yScale = 1.0F + Math.max(0.0F, sin(age * 0.7F)) * 0.03F * idle;
+        }
+        switch (action) {
+            case FROG_CROAK -> {
+                float sac = Math.max(0.0F, sin(at * 0.45F)) * e;
+                head.yScale += 0.2F * sac;
+                head.xScale += 0.1F * sac;
+                head.xRot -= 0.1F * e;
+            }
+            case FROG_BLINK -> head.yScale -= 0.12F * sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+            case RAIN_FROG_PUFF -> {
+                float puff = sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+                body.xScale += 0.22F * puff;
+                body.yScale += 0.18F * puff;
+                body.zScale += 0.2F * puff;
+            }
+            case LOOK_AROUND -> lookAround(at, e);
+            default -> {
+            }
+        }
+    }
+
+    private void salamander(float ls, float move, float idle, float age, CritterAction action, float at, float e) {
+        // walks with the lizard-like side-to-side wave of the whole body
+        gait(ls, move, 1.4F, 0.5F, 0.35F, false, 1.0F);
+        float wave = sin(ls * 1.4F) * 0.16F * move;
+        body.yRot += wave;
+        head.yRot -= wave * 1.3F;
+        for (int k = 0; k < chainSegs.size(); k++) {
+            chainSegs.get(k).yRot += sin(ls * 1.4F - (k + 1) * 0.7F) * 0.2F * move;
+        }
+        tailBase.yRot += sin(ls * 1.4F - 0.5F) * 0.2F * move;
+        // idle: the tail tip curls lazily, throat pumping
+        if (!chainSegs.isEmpty()) {
+            chainSegs.get(chainSegs.size() - 1).yRot += sin(age * 0.06F) * 0.3F * idle;
+            chainSegs.get(chainSegs.size() - 2).yRot += sin(age * 0.06F - 0.6F) * 0.2F * idle;
+        }
+        head.yScale = 1.0F + Math.max(0.0F, sin(age * 0.5F)) * 0.025F * idle;
+        switch (action) {
+            case SALAMANDER_STRETCH -> {
+                legPose(0, -0.25F * e, 0.15F * e, -0.15F * e);
+                legPose(1, -0.25F * e, -0.15F * e, -0.15F * e);
+                head.xRot -= 0.25F * e;
+            }
+            case SALAMANDER_TAIL -> {
+                tailBase.yRot += sin(at * 0.5F) * 0.35F * e;
+                for (int k = 0; k < chainSegs.size(); k++) {
+                    chainSegs.get(k).yRot += sin(at * 0.5F - (k + 1) * 0.6F) * 0.3F * e;
+                }
+            }
+            case LOOK_AROUND -> lookAround(at, e);
             default -> {
             }
         }

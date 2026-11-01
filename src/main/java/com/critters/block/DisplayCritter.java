@@ -22,6 +22,7 @@ public final class DisplayCritter {
     private final Entity entity;
     private final float scale;
     private final boolean flies;
+    private final boolean crawlsOnFloor;
     private final double stride;
     private final float walkSpeed;
 
@@ -39,6 +40,7 @@ public final class DisplayCritter {
         float size = Math.max(entity.getBbWidth(), entity.getBbHeight());
         this.scale = Math.min(1.0F, 0.36F / Math.max(0.05F, size));
         this.flies = species != null && species.family == CritterSpecies.Family.FLYER;
+        this.crawlsOnFloor = species != null && species.family == CritterSpecies.Family.SEA_CRAWLER;
         double speed = species != null && species.speed > 0 ? species.speed : 0.15;
         this.stride = speed * 0.04;
         this.walkSpeed = (float) Math.min(1.0, speed * 3.0);
@@ -59,7 +61,7 @@ public final class DisplayCritter {
     }
 
     void tick(boolean aquarium, BlockPos pos, RandomSource random) {
-        boolean swims = aquarium || flies;
+        boolean swims = (aquarium && !crawlsOnFloor) || flies;
         double halfWidth = entity.getBbWidth() * scale / 2.0;
         double min = Math.min(0.5, GLASS_INSET + halfWidth);
         double max = 1.0 - min;
@@ -94,7 +96,7 @@ public final class DisplayCritter {
             double dy = ty - y;
             double dz = tz - z;
             double dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-            double step = aquarium ? 0.012 : flies ? 0.014 : stride;
+            double step = swims ? (flies ? 0.014 : 0.012) : stride;
             if (dist <= step) {
                 x = tx;
                 y = ty;

@@ -1,10 +1,11 @@
 # Critters
 
-A Fabric mod for **Minecraft 1.21.1** that adds 24 small creatures. You catch them in jars and keep them in terrariums and aquariums, so you can build your own zoo.
+A Fabric mod for **Minecraft 1.21.1** that adds 36 small creatures. You catch them in jars and keep them in terrariums and aquariums, so you can build your own zoo.
 
 ![Snails and crabs](docs/snails_and_crabs.png)
 ![Beetles](docs/beetles.png)
 ![Terrariums, aquarium and fish](docs/terrarium_and_aquarium.png)
+![Sea animals and amphibians](docs/sea_and_amphibians.png)
 
 ## The critters
 
@@ -15,6 +16,9 @@ A Fabric mod for **Minecraft 1.21.1** that adds 24 small creatures. You catch th
 | **Small insects** (3) | Firefly, Cricket, Ant | swamps and forests at night, plains, savannas |
 | **Beetles** (10) | Ladybug, Stag Beetle, Rhinoceros Beetle, Dung Beetle, Jewel Beetle, Golden Scarab, Bombardier Beetle, Weevil, Goliath Beetle, Tiger Beetle | flower fields, forests, jungles, deserts, badlands, taigas, beaches |
 | **Fish** (4) | Goldfish, Betta Fish, Neon Tetra, Angelfish | rivers, swamps, jungles, mangroves, warm oceans |
+| **More fish** (5) | Clownfish, Lionfish, Seahorse, *Blobfish* (ugly), *Anglerfish* (ugly) | warm/lukewarm oceans; blobfish and anglerfish only in the deep ocean |
+| **Sea animals** (4) | Moon Jellyfish (glows), *Dumbo Octopus* (cute), Sea Star, Nudibranch | oceans; the dumbo octopus lives in the deep; sea stars and nudibranchs crawl the sea floor |
+| **Amphibians** (3) | *Rain Frog* (cute), Poison Dart Frog, Fire Salamander | deserts and beaches, jungles, forests and old-growth taigas |
 
 Behaviour:
 
@@ -51,13 +55,26 @@ while resting. Critters in terrariums and aquariums perform them too.
 | Betta | flowing undulation | veils billowing | flare (fins and gill covers spread), dart |
 | Neon tetra | quick flicks | twitchy bursts | dart, nibble |
 | Angelfish | slow glide | trailing filaments sway | banking glide, nibble |
+| Clownfish | quick waggle | busy wiggle, buzzing pectorals | wiggle dance, dart, nibble |
+| Lionfish | slow hover | huge fans slowly open and close, spines sway | fan display (fins and spines spread), nibble |
+| Seahorse | upright drift | dorsal fin a blur, tail coiling and uncoiling | tail curl, bow |
+| Blobfish | sluggish | sagging, wobbling "breaths", droopy nose | sigh (deflates and sags), nibble |
+| Anglerfish | slow prowl | lure dangles and sways, mouth agape | lure dance (glowing), jaw snap |
+| Moon Jellyfish | bell pulses | slow pulsing drift, tentacles trailing | strong pulses, spin |
+| Dumbo Octopus | flaps its "ears" | gentle ear flaps, bobbing, arms curling | rapid flap, umbrella (arms flared up) |
+| Sea Star | slow tube-foot ripple | arm tips lift one by one | curl up, wave an arm |
+| Nudibranch | muscular crawl | horns sway, gill plume breathes | tuck horns, gill flutter |
+| Rain Frog | stubby waddle | slow round breathing | puff up into a ball, blink, croak |
+| Poison Dart Frog | crawl and hop, kicks while swimming | fast throat breathing | croak (vocal sac), blink, look around |
+| Fire Salamander | side-to-side body wave | lazy tail curl, throat pumping | stretch up, tail wag, look around |
 
 ## Catching and displaying
 
 | Item / Block | How to use it |
 |---|---|
 | **Critter Jar** | Use it on any land critter to catch it. You get a jar with that critter in it, which keeps its name and health. Use the filled jar on a block to let the critter go. Released critters never despawn. |
-| **Fish** | Catch them with a water bucket, like vanilla fish. You get a *Bucket of Goldfish* and so on. |
+| **Fish and sea animals** | Catch them with a water bucket, like vanilla fish. You get a *Bucket of Goldfish* and so on. This includes jellyfish, octopuses, sea stars and nudibranchs. |
+| **Amphibians** | Catch frogs and salamanders with a Critter Jar and keep them in a Terrarium. |
 | **Terrarium** | Use a filled jar on it to move the critter inside. It holds 3 critters, which wander around on the moss inside the glass. Fireflies fly around inside. |
 | **Aquarium** | Use a fish bucket on it to move the fish inside. It holds 4 fish. It accepts vanilla fish buckets too: cod, salmon, pufferfish and tropical fish, which keep their patterns. |
 

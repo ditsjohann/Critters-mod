@@ -1325,4 +1325,6 @@ def all_models():
     out += [firefly(), cricket(), ant()]
     out += [beetle(b) for b in BEETLES]
     out += [fish(f) for f in ('goldfish', 'betta', 'neon_tetra', 'angelfish')]
+    from sea_models import sea_models
+    out += sea_models()
     return out

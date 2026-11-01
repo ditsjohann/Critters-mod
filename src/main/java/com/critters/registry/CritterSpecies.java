@@ -40,13 +40,38 @@ public enum CritterSpecies {
     GOLDFISH("goldfish", Family.FISH, 0.5F, 0.35F, 3.0, 0, 0xF08A1C, 0xFFD07A),
     BETTA("betta", Family.FISH, 0.5F, 0.4F, 3.0, 0, 0x2A3FA8, 0xC8243A),
     NEON_TETRA("neon_tetra", Family.FISH, 0.35F, 0.25F, 3.0, 0, 0x2AD8FF, 0xE8243A),
-    ANGELFISH("angelfish", Family.FISH, 0.45F, 0.6F, 3.0, 0, 0xD8D8D0, 0x202020);
+    ANGELFISH("angelfish", Family.FISH, 0.45F, 0.6F, 3.0, 0, 0xD8D8D0, 0x202020),
+    // --- Second wave: more fish, sea animals and amphibians ---
+    CLOWNFISH("clownfish", Family.FISH, 0.4F, 0.35F, 3.0, 0, 0xF26A10, 0xFAFAF4),
+    LIONFISH("lionfish", Family.FISH, 0.55F, 0.45F, 4.0, 0, 0xF4ECE0, 0x8A1A12),
+    SEAHORSE("seahorse", Family.FISH, 0.25F, 0.5F, 3.0, 0.5, 0xE8A828, 0x9A5A14),
+    BLOBFISH("blobfish", Family.FISH, 0.45F, 0.4F, 4.0, 0.45, 0xE6A49A, 0xA8505A),       // ugly
+    ANGLERFISH("anglerfish", Family.FISH, 0.45F, 0.45F, 5.0, 0.6, 0x2A2220, 0x9AFFE8),   // ugly
+    JELLYFISH("jellyfish", Family.SWIMMER, 0.5F, 0.6F, 3.0, 0.3, 0xD8E8F4, 0xD878C8),
+    DUMBO_OCTOPUS("dumbo_octopus", Family.SWIMMER, 0.45F, 0.45F, 4.0, 0.5, 0xF4A898, 0xFFD8C8), // cute
+    SEA_STAR("sea_star", Family.SEA_CRAWLER, 0.45F, 0.15F, 4.0, 0.04, 0xD8502A, 0xFFC890),
+    NUDIBRANCH("nudibranch", Family.SEA_CRAWLER, 0.3F, 0.15F, 3.0, 0.06, 0x4A3CE0, 0xF06A14),
+    RAIN_FROG("rain_frog", Family.FROG, 0.3F, 0.3F, 4.0, 0.12, 0xB88A56, 0xF2DCC8),       // cute
+    DART_FROG("dart_frog", Family.FROG, 0.3F, 0.25F, 3.0, 0.2, 0x2A6AE8, 0x080810),
+    FIRE_SALAMANDER("fire_salamander", Family.AMPHIBIAN, 0.35F, 0.2F, 5.0, 0.12, 0x18181C, 0xF4C010);
 
     public enum Family {
-        SNAIL, CRAB, FLYER, HOPPER, CRAWLER, BEETLE, FISH;
+        SNAIL, CRAB, FLYER, HOPPER, CRAWLER, BEETLE, FISH,
+        /** Free-swimming non-fish (jellyfish, octopus) - uses the fish entity. */
+        SWIMMER,
+        /** Sea-floor crawlers caught with a bucket (sea star, nudibranch). */
+        SEA_CRAWLER,
+        FROG,
+        AMPHIBIAN;
 
+        /** Caught with a water bucket and kept in the aquarium. */
         public boolean isAquatic() {
-            return this == FISH;
+            return this == FISH || this == SWIMMER || this == SEA_CRAWLER;
+        }
+
+        /** Uses the (schooling) fish entity class. */
+        public boolean isFishLike() {
+            return this == FISH || this == SWIMMER;
         }
     }
 
@@ -96,6 +121,11 @@ public enum CritterSpecies {
         return family.isAquatic();
     }
 
+    /** Deep-sea species spawn far below the surface. */
+    public boolean isDeepSea() {
+        return this == BLOBFISH || this == ANGLERFISH || this == DUMBO_OCTOPUS;
+    }
+
     /** Max fish in a school (fish only). */
     public int schoolSize() {
         return switch (this) {
@@ -103,6 +133,8 @@ public enum CritterSpecies {
             case BETTA -> 1; // bettas are famously solitary
             case NEON_TETRA -> 12;
             case ANGELFISH -> 3;
+            case CLOWNFISH -> 3;
+            case SEAHORSE -> 2;
             default -> 1;
         };
     }

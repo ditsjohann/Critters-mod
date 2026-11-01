@@ -63,6 +63,16 @@ public class CritterFishEntity extends AbstractSchoolingFish implements ActionHo
         return hurt;
     }
 
+    /** Deep-sea species: anywhere in water well below sea level. */
+    public static boolean checkDeepWaterSpawnRules(EntityType<? extends net.minecraft.world.entity.Mob> type,
+                                                   net.minecraft.world.level.LevelAccessor level,
+                                                   net.minecraft.world.entity.MobSpawnType reason,
+                                                   net.minecraft.core.BlockPos pos, net.minecraft.util.RandomSource random) {
+        return level.getFluidState(pos).is(net.minecraft.tags.FluidTags.WATER)
+                && level.getFluidState(pos.above()).is(net.minecraft.tags.FluidTags.WATER)
+                && pos.getY() < level.getSeaLevel() - 14;
+    }
+
     private CritterSpecies species() {
         CritterSpecies s = CritterSpecies.byType(getType());
         return s != null ? s : CritterSpecies.GOLDFISH;

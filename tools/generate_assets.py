@@ -59,9 +59,23 @@ SPECIES = [
     ('betta', 'Betta Fish', 'fish', 0x2A3FA8, 0xC8243A, 0x3A3AD8),
     ('neon_tetra', 'Neon Tetra', 'fish', 0xB8C4C8, 0x2AD8FF, 0xE8243A),
     ('angelfish', 'Angelfish', 'fish', 0xD8D8D0, 0x202020, 0xE8D89A),
+    ('clownfish', 'Clownfish', 'fish', 0xF26A10, 0xFAFAF4, 0x141010),
+    ('lionfish', 'Lionfish', 'lionfish', 0xF4ECE0, 0x8A1A12, 0x8A1A12),
+    ('seahorse', 'Seahorse', 'seahorse', 0xE8A828, 0x9A5A14, 0xFFF4D8),
+    ('blobfish', 'Blobfish', 'blob', 0xE6A49A, 0xA8505A, 0xC8746C),
+    ('anglerfish', 'Anglerfish', 'angler', 0x2A2220, 0xEDE6D8, 0x9AFFE8),
+    ('jellyfish', 'Moon Jellyfish', 'jelly', 0xD8E8F4, 0xD878C8, 0xF0E8F8),
+    ('dumbo_octopus', 'Dumbo Octopus', 'octopus', 0xF4A898, 0x0A0A10, 0xFFD8C8),
+    ('sea_star', 'Sea Star', 'star', 0xD8502A, 0xFFC890, 0x7A1E24),
+    ('nudibranch', 'Nudibranch', 'slug', 0x4A3CE0, 0xF06A14, 0xFFF0A0),
+    ('rain_frog', 'Rain Frog', 'rainfrog', 0xB88A56, 0x0A0A10, 0xF2DCC8),
+    ('dart_frog', 'Poison Dart Frog', 'frog', 0x2A6AE8, 0x080810, 0x1A2A5A),
+    ('fire_salamander', 'Fire Salamander', 'salamander', 0x18181C, 0xF4C010, 0xF08A10),
 ]
-FISH = [s for s in SPECIES if s[2] == 'fish']
-LAND = [s for s in SPECIES if s[2] != 'fish']
+# critters caught with a water bucket (and kept in the aquarium); everything else goes in a jar
+AQUATIC_ICONS = {'fish', 'lionfish', 'seahorse', 'blob', 'angler', 'jelly', 'octopus', 'star', 'slug'}
+FISH = [s for s in SPECIES if s[2] in AQUATIC_ICONS]
+LAND = [s for s in SPECIES if s[2] not in AQUATIC_ICONS]
 
 
 def write(path, content):
@@ -183,6 +197,52 @@ SPRITES = {
              '.PPPPS..',
              'KPPPPPSS',
              '.PPPPS..'],
+    'lionfish': ['S.S.S...',
+                 'PSPSPS..',
+                 'KPSPSPSS',
+                 'SPSPSS..'],
+    'seahorse': ['.PP.',
+                 'PPPP',
+                 '.PP.',
+                 '.PS.'],
+    'blob': ['.PPPP...',
+             'PPKPPPS.',
+             'PSSPPPSS',
+             '.SSPP...'],
+    'angler': ['..D.....',
+               '.D......',
+               'PPPPPS..',
+               'KSPSPPSS',
+               'PPPPPS..'],
+    'jelly': ['.PPPP.',
+              'PSPPSP',
+              'P.S.SP',
+              '.P.P.P'],
+    'octopus': ['.PPPP.',
+                'PSPPSP',
+                'PPPPPP',
+                'P.P.PP'],
+    'star': ['...P...',
+             'PPPPPPP',
+             '.PPSPP.',
+             'PP...PP'],
+    'slug': ['.S...S..',
+             '.PPPPPPS',
+             'DPPPPPPD'],
+    'rainfrog': ['.PPPP.',
+                 'PSPPSP',
+                 'PPPPPP',
+                 'PDDDDP',
+                 '.P..P.'],
+    'frog': ['.S..S..',
+             'PPPPPP.',
+             'PSPPPSP',
+             'PPPPPPP',
+             'P.P..PP'],
+    'salamander': ['.......P',
+                   'SPS.PPSP',
+                   'PPSPSPP.',
+                   'P.P.P...'],
 }
 
 
@@ -241,7 +301,8 @@ def gen_items():
         for x in range(2, 14):
             p[x, 7] = (60, 110, 220, 255) if 2 < x < 13 else (88, 90, 98, 255)
             p[x, 6] = (120, 122, 130, 255)
-        draw_sprite(p, SPRITES['fish'], sprite_colors(sp), 4, 3)
+        sprite = SPRITES[sp[2]]
+        draw_sprite(p, sprite, sprite_colors(sp), 8 - len(sprite[0]) // 2, 7 - len(sprite) + 1)
         img.save(os.path.join(tex, sp[0] + '_bucket.png'))
     print('items done')
 
@@ -501,7 +562,7 @@ def gen_json():
     for sid, name, fam, *_ in SPECIES:
         lang['entity.critters.' + sid] = name
         lang['item.critters.%s_spawn_egg' % sid] = name + ' Spawn Egg'
-        if fam == 'fish':
+        if fam in AQUATIC_ICONS:
             lang['item.critters.%s_bucket' % sid] = 'Bucket of ' + name
         else:
             lang['item.critters.%s_jar' % sid] = name + ' in a Jar'
@@ -549,7 +610,7 @@ def gen_json():
 
     # --- tags ---
     write_json(os.path.join(ROOT, 'src/main/resources/data/minecraft/tags/entity_type/can_breathe_under_water.json'),
-               {'replace': False, 'values': ['critters:fiddler_crab', 'critters:rock_crab']})
+               {'replace': False, 'values': ['critters:fiddler_crab', 'critters:rock_crab', 'critters:sea_star', 'critters:nudibranch']})
 
     # --- mod icon ---
     ladybug = Image.open(os.path.join(ASSETS, 'textures/item/ladybug_jar.png'))

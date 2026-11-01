@@ -70,6 +70,16 @@ public final class CritterPoses {
             case GOLDFISH -> rise += Mth.sin(age * 0.08F) * 0.012F * idle;
             case BETTA -> roll += Mth.sin(age * 0.05F) * 3.0F * idle;
             case ANGELFISH -> pitch += Mth.sin(age * 0.04F) * 3.0F * idle;
+            case SEAHORSE -> rise += Mth.sin(age * 0.07F) * 0.015F;
+            case BLOBFISH -> rise += Mth.sin(age * 0.05F) * 0.008F * idle;
+            case JELLYFISH -> rise += Mth.sin(age * 0.18F) * 0.02F;
+            case DUMBO_OCTOPUS -> {
+                rise += Mth.sin(age * 0.1F) * 0.02F;
+                roll += Mth.sin(age * 0.06F) * 4.0F * idle;
+            }
+            case RAIN_FROG -> roll += Mth.sin(ls * 2.2F) * 7.0F * move;
+            case DART_FROG -> pitch -= 6.0F;
+            case FIRE_SALAMANDER -> roll += Mth.sin(ls * 1.4F) * 3.0F * move;
             default -> {
             }
         }
@@ -118,6 +128,16 @@ public final class CritterPoses {
             case FISH_NIBBLE -> pitch += (22.0F + Mth.sin(at * 0.8F) * 6.0F) * e;
             case ANGEL_GLIDE -> roll += Mth.sin(at * 0.1F) * 12.0F * e;
             case SNAIL_LOOK_UP -> pitch -= 6.0F * e;
+            case CLOWN_WIGGLE -> roll += Mth.sin(at * 1.6F) * 10.0F * e;
+            case SEAHORSE_BOW -> pitch += Math.abs(Mth.sin(at * 0.14F)) * 12.0F * e;
+            case BLOB_SIGH -> rise -= 0.02F * Mth.sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+            case ANGLER_SNAP -> forward += at < 14 ? 0.0F : 0.06F * Mth.clamp(1.0F - (at - 14) / 10.0F, 0.0F, 1.0F);
+            case JELLY_PULSE -> rise += 0.04F * e;
+            case OCTO_FLAP -> rise += Math.abs(Mth.sin(at * 0.3F)) * 0.05F * e;
+            case OCTO_UMBRELLA -> rise += 0.03F * e;
+            case RAIN_FROG_PUFF -> rise += 0.015F * Mth.sin(Mth.clamp(at / action.duration, 0.0F, 1.0F) * PI);
+            case FROG_CROAK -> pitch -= 4.0F * e;
+            case SALAMANDER_STRETCH -> rise += 0.025F * e;
             default -> {
             }
         }

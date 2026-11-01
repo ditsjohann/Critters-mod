@@ -42,7 +42,28 @@ public enum CritterAction {
     FISH_DART(18),
     FISH_NIBBLE(35),
     BETTA_FLARE(55),
-    ANGEL_GLIDE(60);
+    ANGEL_GLIDE(60),
+    // second wave
+    CLOWN_WIGGLE(40),
+    LIONFISH_FAN(60),
+    SEAHORSE_CURL(60),
+    SEAHORSE_BOW(45),
+    BLOB_SIGH(70),
+    ANGLER_LURE(70),
+    ANGLER_SNAP(25),
+    JELLY_PULSE(50),
+    JELLY_SPIN(70),
+    OCTO_FLAP(45),
+    OCTO_UMBRELLA(60),
+    STAR_CURL(70),
+    STAR_WAVE(60),
+    SLUG_RHINO(50),
+    SLUG_GILLS(55),
+    FROG_CROAK(50),
+    FROG_BLINK(20),
+    RAIN_FROG_PUFF(60),
+    SALAMANDER_STRETCH(50),
+    SALAMANDER_TAIL(45);
 
     private static final CritterAction[] VALUES = values();
 
@@ -81,6 +102,18 @@ public enum CritterAction {
             case BETTA -> List.of(BETTA_FLARE, FISH_DART);
             case NEON_TETRA -> List.of(FISH_DART, FISH_NIBBLE);
             case ANGELFISH -> List.of(ANGEL_GLIDE, FISH_NIBBLE);
+            case CLOWNFISH -> List.of(CLOWN_WIGGLE, FISH_DART, FISH_NIBBLE);
+            case LIONFISH -> List.of(LIONFISH_FAN, FISH_NIBBLE);
+            case SEAHORSE -> List.of(SEAHORSE_CURL, SEAHORSE_BOW);
+            case BLOBFISH -> List.of(BLOB_SIGH, FISH_NIBBLE);
+            case ANGLERFISH -> List.of(ANGLER_LURE, ANGLER_SNAP);
+            case JELLYFISH -> List.of(JELLY_PULSE, JELLY_SPIN);
+            case DUMBO_OCTOPUS -> List.of(OCTO_FLAP, OCTO_UMBRELLA);
+            case SEA_STAR -> List.of(STAR_CURL, STAR_WAVE);
+            case NUDIBRANCH -> List.of(SLUG_RHINO, SLUG_GILLS);
+            case RAIN_FROG -> List.of(RAIN_FROG_PUFF, FROG_BLINK, FROG_CROAK);
+            case DART_FROG -> List.of(FROG_CROAK, FROG_BLINK, LOOK_AROUND);
+            case FIRE_SALAMANDER -> List.of(SALAMANDER_STRETCH, SALAMANDER_TAIL, LOOK_AROUND);
         };
     }
 }

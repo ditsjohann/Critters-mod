@@ -26,12 +26,24 @@ import com.critters.client.model.layers.GoldfishLayer;
 import com.critters.client.model.layers.BettaLayer;
 import com.critters.client.model.layers.NeonTetraLayer;
 import com.critters.client.model.layers.AngelfishLayer;
+import com.critters.client.model.layers.ClownfishLayer;
+import com.critters.client.model.layers.LionfishLayer;
+import com.critters.client.model.layers.SeahorseLayer;
+import com.critters.client.model.layers.BlobfishLayer;
+import com.critters.client.model.layers.AnglerfishLayer;
+import com.critters.client.model.layers.JellyfishLayer;
+import com.critters.client.model.layers.DumboOctopusLayer;
+import com.critters.client.model.layers.SeaStarLayer;
+import com.critters.client.model.layers.NudibranchLayer;
+import com.critters.client.model.layers.RainFrogLayer;
+import com.critters.client.model.layers.DartFrogLayer;
+import com.critters.client.model.layers.FireSalamanderLayer;
 import java.util.Set;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 
 public final class CritterLayers {
     /** Critters that have an emissive "_glow" texture. */
-    public static final Set<String> GLOWING = Set.of("amethyst_snail", "magma_snail", "firefly", "neon_tetra");
+    public static final Set<String> GLOWING = Set.of("amethyst_snail", "magma_snail", "firefly", "neon_tetra", "anglerfish", "jellyfish");
 
     private CritterLayers() {
     }
@@ -62,6 +74,18 @@ public final class CritterLayers {
             case "betta" -> BettaLayer.create();
             case "neon_tetra" -> NeonTetraLayer.create();
             case "angelfish" -> AngelfishLayer.create();
+            case "clownfish" -> ClownfishLayer.create();
+            case "lionfish" -> LionfishLayer.create();
+            case "seahorse" -> SeahorseLayer.create();
+            case "blobfish" -> BlobfishLayer.create();
+            case "anglerfish" -> AnglerfishLayer.create();
+            case "jellyfish" -> JellyfishLayer.create();
+            case "dumbo_octopus" -> DumboOctopusLayer.create();
+            case "sea_star" -> SeaStarLayer.create();
+            case "nudibranch" -> NudibranchLayer.create();
+            case "rain_frog" -> RainFrogLayer.create();
+            case "dart_frog" -> DartFrogLayer.create();
+            case "fire_salamander" -> FireSalamanderLayer.create();
             default -> throw new IllegalArgumentException("Unknown critter model: " + id);
         };
     }
@@ -93,6 +117,18 @@ public final class CritterLayers {
             case "betta" -> 0.2F;
             case "neon_tetra" -> 0.2F;
             case "angelfish" -> 0.2F;
+            case "clownfish" -> 0.2F;
+            case "lionfish" -> 0.2F;
+            case "seahorse" -> 0.2F;
+            case "blobfish" -> 0.2F;
+            case "anglerfish" -> 0.2F;
+            case "jellyfish" -> 0.2F;
+            case "dumbo_octopus" -> 0.2F;
+            case "sea_star" -> 0.2F;
+            case "nudibranch" -> 0.2F;
+            case "rain_frog" -> 0.2F;
+            case "dart_frog" -> 0.2F;
+            case "fire_salamander" -> 0.2F;
             default -> 1.0F;
         };
     }
