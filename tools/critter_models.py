@@ -198,7 +198,7 @@ def crab(sid, shell, under, claw_l, claw_r, legc, scale, big_right=False, spots=
     pat = []
     if spots:
         pat.append(('speckle', hexc(spots), 0.15, ('top',)))
-    body = Part('body', (0, 20, 0), (0, 0, 0), [
+    body = Part('body', (0, 22, 0), (0, 0, 0), [
         Cube(-5, -3, -3.5, 10, 3, 7, S(shell, bottom=under, pat=pat + [('rim', hexc(darken(shell, 0.25)))])),
         Cube(-4, -4, -2.5, 8, 1, 5, S(lighten(shell, 0.08), pat=pat)),
     ])
@@ -210,13 +210,13 @@ def crab(sid, shell, under, claw_l, claw_r, legc, scale, big_right=False, spots=
     parts = [body]
     zs = (-1.8, 0.5, 2.6)
     for i, z in enumerate(zs):
-        parts.append(leg('leg_l%d' % i, 1, 4.5, 19.0, z, 6, (0.35, 0.0, -0.4)[i], legc))
-        parts.append(leg('leg_r%d' % i, -1, 4.5, 19.0, z, 6, (0.35, 0.0, -0.4)[i], legc))
+        parts.append(leg('leg_l%d' % i, 1, 4.5, 21.0, z, 5, (0.45, 0.05, -0.45)[i], legc))
+        parts.append(leg('leg_r%d' % i, -1, 4.5, 21.0, z, 5, (0.45, 0.05, -0.45)[i], legc))
     # claws: an arm reaching forward, with a pincer on the end
     for side, nm, col in ((1, 'l', claw_l), (-1, 'r', claw_r)):
         big = big_right and side < 0
         small = big_right and side > 0
-        arm = Part('claw_' + nm, (side * 3.5, 18.5, -3.5), (0.15, side * 0.55, 0), [
+        arm = Part('claw_' + nm, (side * 3.5, 20.5, -3.5), (0.15, side * 0.55, 0), [
             Cube(-1, -1, -3, 2, 2, 3, S(darken(col, 0.1)))])
         if big:
             pincer = Part('pincer_' + nm, (0, 0, -3), (0, -0.3 * side, 0), [

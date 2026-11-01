@@ -2,6 +2,11 @@
 
 A Fabric mod for **Minecraft 1.21.1** that adds 24 small creatures. You catch them in jars and keep them in terrariums and aquariums, so you can build your own zoo.
 
+![Snails, crabs and insects](docs/snails_and_crabs.png)
+![Beetles](docs/beetles.png)
+![Terrariums, an aquarium, and snails climbing out of a pit leaving slime trails](docs/terrarium_and_slime_trails.png)
+![Fish](docs/fish.png)
+
 ## The critters
 
 | Group | Critters | Where to find them |
