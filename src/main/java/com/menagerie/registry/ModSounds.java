@@ -32,6 +32,12 @@ public final class ModSounds {
     public static final SoundEvent EATING = register("eating");
     public static final SoundEvent ARMOR_PUT = register("armorput");
     public static final SoundEvent ARMOR_OFF = register("armoroff");
+    public static final SoundEvent LION_GRUNT = register("liongrunt");
+    public static final SoundEvent LION_HURT = register("lionhurt");
+    public static final SoundEvent LION_DEATH = register("liondeath");
+    public static final SoundEvent CUB_GRUNT = register("cubgrunt");
+    public static final SoundEvent CUB_HURT = register("cubhurt");
+    public static final SoundEvent CUB_DYING = register("cubdying");
 
     private ModSounds() {
     }

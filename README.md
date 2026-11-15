@@ -24,10 +24,31 @@ original's open-source (GPL-3.0) code, models, textures and sounds. See [CREDITS
   knocks monsters aside; a ridden nightmare sets nearby monsters alight; foals of tamed parents are born tame;
   zebras live on the savanna; until the original monsters are ported, hearts drop from vanilla monsters
   (undead → heart of undead, blazes/magma cubes/ghasts → heart of fire, endermen/phantoms/wither skeletons → heart of darkness).
+- Armor is put on by using it on a tamed horse.
 - Creative tab has a spawn egg for every breed.
+
+### Big cats
+- **10 species** with the original model, animation and textures: lions (lionesses, lions, white lions),
+  tigers (orange and white), panthers, leopards and snow leopards, and the hybrids **liger, liard, lither,
+  leoger, panthger and panthard**, bred by crossing species as in the original.
+- **Winged cats**: essence of light gives a male lion, white lion, white tiger or liger wings;
+  essence of darkness gives a panther wings. Winged cats fly while ridden.
+- **Wild behaviour**: adults stalk players and go hunting for smaller animals; lionesses spot prey from further away;
+  cats walk over to eat meat dropped on the ground.
+- **Taming (original)**: feed a cub meat (drop it, or new: hand it over), then give it a **medallion**. Tamed cats wear
+  a collar, follow you, sit on command (whip or empty hand), defend you, carry a **chest** (sneak + use to open)
+  and can be ridden with a **saddle**. A tamed cat may come back as a **ghost cub** when it dies.
+- Big cats drop **claws**, which craft the **whip** (as in the original).
+- Spawns: lions on the savanna, tigers and panthers in jungles, leopards on the savanna, snow leopards on snowy slopes,
+  groves and snowy taiga.
 
 ## Building
 `./gradlew build` (Java 21). The jar is written to `build/libs/`.
+
+Every push is also built by GitHub Actions (`.github/workflows/build.yml`); the jar is attached to each run as
+the `menagerie` artifact. `.github/workflows/api-dump.yml` prints real Minecraft 1.21.1 method signatures for the
+classes in `tools/api-classes.txt`, filtered by `tools/api-grep.txt` (note: the dumped jar already has this mod's
+access widener applied).
 
 ## Tools
 - `tools/convert_model.py`: converts an original 1.12 model class into 1.21.1 model geometry.

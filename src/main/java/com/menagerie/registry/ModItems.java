@@ -23,6 +23,8 @@ public final class ModItems {
     public static final Item SUGAR_LUMP = register("sugar_lump", new Item(new Item.Properties()));
     public static final Item HAYSTACK = register("haystack", new Item(new Item.Properties()));
     public static final Item WHIP = register("whip", new Item(new Item.Properties().stacksTo(1)));
+    public static final Item MEDALLION = register("medallion", new Item(new Item.Properties()));
+    public static final Item BIG_CAT_CLAW = register("big_cat_claw", new Item(new Item.Properties()));
     public static final Item CRYSTAL_HORSE_ARMOR = register("crystal_horse_armor", new Item(new Item.Properties()
             .stacksTo(1)
             .rarity(Rarity.RARE)
