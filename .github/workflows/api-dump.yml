@@ -8,6 +8,7 @@ on:
     paths:
       - tools/api-classes.txt
       - tools/api-grep.txt
+      - tools/api-data.txt
 
 jobs:
   dump:
@@ -33,3 +34,17 @@ jobs:
             PATTERN=$(grep -v '^#' tools/api-grep.txt | paste -sd'|')
             javap -cp "$JARS" -p "$cls" 2>&1 | grep -v '^Compiled from' | grep -E "class |interface |$PATTERN" || true
           done
+      - name: Print vanilla data files
+        run: |
+          SERVER=$(find ~/.gradle/caches/fabric-loom -name 'minecraft-server.jar' | head -1)
+          echo "SERVER=$SERVER"
+          if [ -n "$SERVER" ] && grep -qv '^#' tools/api-data.txt; then
+            mkdir -p /tmp/gen && cd /tmp/gen
+            java -DbundlerMainClass=net.minecraft.data.Main -jar "$SERVER" --server --output /tmp/gen/out > /tmp/gen/log.txt 2>&1 || tail -20 /tmp/gen/log.txt
+            cd "$GITHUB_WORKSPACE"
+            grep -v '^#' tools/api-data.txt | while read -r f; do
+              [ -z "$f" ] && continue
+              echo "=== $f"
+              cat "/tmp/gen/out/$f" || echo "(missing)"
+            done
+          fi

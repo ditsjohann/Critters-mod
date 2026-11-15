@@ -1,0 +1,3 @@
+# Vanilla generated data files to print (paths inside the data generator output).
+data/minecraft/worldgen/noise_settings/floating_islands.json
+data/minecraft/dimension_type/the_end.json
