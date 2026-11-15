@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:ender_pearl"
+    },
+    "Y": {
+      "item": "menagerie:heart_of_darkness"
+    },
+    "Z": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "id": "menagerie:essence_of_darkness",
+    "count": 1
+  }
+}

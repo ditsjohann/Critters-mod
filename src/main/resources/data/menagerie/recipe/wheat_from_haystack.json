@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "menagerie:haystack"
+    }
+  ],
+  "result": {
+    "id": "minecraft:wheat",
+    "count": 6
+  }
+}

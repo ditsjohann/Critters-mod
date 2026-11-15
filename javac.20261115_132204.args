@@ -1,0 +1,15 @@
+-d
+/tmp/claude-0/-home-user-Critters-mod/ad448c99-1de4-5937-922a-768b6fead306/scratchpad/jc
+src/main/java/com/menagerie/event/HeartDrops.java
+src/main/java/com/menagerie/registry/ModItems.java
+src/main/java/com/menagerie/registry/ModSounds.java
+src/main/java/com/menagerie/registry/ModEntities.java
+src/main/java/com/menagerie/registry/ModCreativeTab.java
+src/main/java/com/menagerie/entity/horse/MenagerieHorse.java
+src/main/java/com/menagerie/entity/horse/HorseBreeds.java
+src/main/java/com/menagerie/Menagerie.java
+src/client/java/com/menagerie/client/model/MenagerieHorseModel.java
+src/client/java/com/menagerie/client/model/ModModelLayers.java
+src/client/java/com/menagerie/client/model/geom/NewHorseGeometry.java
+src/client/java/com/menagerie/client/MenagerieClient.java
+src/client/java/com/menagerie/client/render/MenagerieHorseRenderer.java

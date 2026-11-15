@@ -86,7 +86,8 @@ Bee, Fly, Dragonfly (4 colors), Firefly (glows), Cricket (2), Butterfly (7 real 
 ### Transformations with essence vials (tamed horses only)
 - **Essence of Fire** (nightmare vial) on a **zorse** → **Nightmare**.
 - **Essence of Darkness** on a **zorse** → **Bat Horse**. On a **pegasus** → **Dark Pegasus**.
-- **Essence of Light** on a zorse → **Unicorn**. On a **bat horse above Y=128** → **Pegasus**. Also restores decayed skeleton/undead horses.
+- **Essence of Light** on a **nightmare** → **Unicorn**. On a **bat horse above Y=128** → **Pegasus**. Also restores decayed skeleton/undead horses. *(Corrected after reading the 1.12.1 code; an earlier draft said "zorse".)*
+- Magic horses don't eat. To breed, give them their essence at full health (fire for nightmares, darkness for bat horses, light for other magic horses). Regular horses breed after eating pumpkin, mushroom stew, cake or golden carrot.
 - **Essence of Undead**: pegasus/bat → undead pegasus, unicorn/fairy → undead unicorn, regular/zebra/zorse → undead horse.
 
 ### Equipment and care
