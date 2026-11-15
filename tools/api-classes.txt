@@ -1,0 +1,9 @@
+# Classes whose signatures the API dump workflow prints (one fully qualified name per line).
+net.minecraft.world.entity.Mob
+net.minecraft.world.entity.animal.horse.AbstractHorse
+net.minecraft.world.entity.animal.horse.AbstractChestedHorse
+net.minecraft.world.entity.TamableAnimal
+net.minecraft.world.entity.animal.Animal
+net.minecraft.world.entity.AgeableMob
+net.minecraft.world.inventory.HorseInventoryMenu
+net.minecraft.world.entity.animal.horse.Llama

@@ -1,0 +1,33 @@
+name: API dump
+
+# Prints the real Minecraft 1.21.1 (Mojang-mapped) signatures of the classes listed in
+# tools/api-classes.txt, so code can be checked against the actual API.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - tools/api-classes.txt
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Set up Minecraft jars
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon compileJava || true
+      - name: Dump signatures
+        run: |
+          JARS=$(find .gradle/loom-cache ~/.gradle/caches/fabric-loom -name '*.jar' \( -name '*minecraft-common*' -o -name '*minecraft-clientOnly*' -o -name '*minecraft-merged*' \) 2>/dev/null | grep -v sources | tr '\n' ':')
+          echo "JARS=$JARS"
+          grep -v '^#' tools/api-classes.txt | while read -r cls; do
+            [ -z "$cls" ] && continue
+            echo "=== $cls"
+            javap -cp "$JARS" -p "$cls" 2>&1 | grep -v '^Compiled from' || true
+          done
