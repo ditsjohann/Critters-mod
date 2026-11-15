@@ -112,5 +112,22 @@
   "entity.menagerie.tiger.white_winged": "Winged White Tiger",
   "entity.menagerie.leopard.snow": "Snow Leopard",
   "item.menagerie.medallion": "Medallion",
-  "item.menagerie.big_cat_claw": "Big Cat Claw"
+  "item.menagerie.big_cat_claw": "Big Cat Claw",
+  "entity.menagerie.wyvern": "Wyvern",
+  "entity.menagerie.wyvern_egg": "Wyvern Egg",
+  "entity.menagerie.wyvern.jungle": "Jungle Wyvern",
+  "entity.menagerie.wyvern.swamp": "Swamp Wyvern",
+  "entity.menagerie.wyvern.desert": "Desert Wyvern",
+  "entity.menagerie.wyvern.sun": "Sun Wyvern",
+  "entity.menagerie.wyvern.mother": "Mother Wyvern",
+  "entity.menagerie.wyvern.undead": "Undead Wyvern",
+  "entity.menagerie.wyvern.light": "Light Wyvern",
+  "entity.menagerie.wyvern.dark": "Dark Wyvern",
+  "entity.menagerie.wyvern.arctic": "Arctic Wyvern",
+  "entity.menagerie.wyvern.cave": "Cave Wyvern",
+  "entity.menagerie.wyvern.mountain": "Mountain Wyvern",
+  "entity.menagerie.wyvern.sea": "Sea Wyvern",
+  "item.menagerie.wyvern_egg": "Wyvern Egg",
+  "item.menagerie.wyvern_egg.kind": "%s Egg",
+  "item.menagerie.wyvern_spawn_egg": "Wyvern Spawn Egg"
 }

@@ -38,6 +38,11 @@ public final class ModSounds {
     public static final SoundEvent CUB_GRUNT = register("cubgrunt");
     public static final SoundEvent CUB_HURT = register("cubhurt");
     public static final SoundEvent CUB_DYING = register("cubdying");
+    public static final SoundEvent WYVERN_GRUNT = register("wyverngrunt");
+    public static final SoundEvent WYVERN_HURT = register("wyvernhurt");
+    public static final SoundEvent WYVERN_DYING = register("wyverndying");
+    public static final SoundEvent WYVERN_WING_FLAP = register("wyvernwingflap");
+    public static final SoundEvent TRANSFORM = register("transform");
 
     private ModSounds() {
     }

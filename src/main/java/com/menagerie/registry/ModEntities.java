@@ -4,6 +4,8 @@ import com.menagerie.Menagerie;
 import com.menagerie.entity.bigcat.BigCat;
 import com.menagerie.entity.bigcat.BigCatSpecies;
 import com.menagerie.entity.horse.MenagerieHorse;
+import com.menagerie.entity.wyvern.Wyvern;
+import com.menagerie.entity.wyvern.WyvernEgg;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -35,6 +37,23 @@ public final class ModEntities {
 
     public static final Item HORSE_SPAWN_EGG = ModItems.register("horse_spawn_egg",
             new SpawnEggItem(HORSE, 0xC09E7D, 0xEEE500, new Item.Properties()));
+
+    public static final EntityType<Wyvern> WYVERN = Registry.register(BuiltInRegistries.ENTITY_TYPE, Menagerie.id("wyvern"),
+            EntityType.Builder.of(Wyvern::new, MobCategory.CREATURE)
+                    .sized(1.6F, 1.4F)   // at size factor 1.0; scaled by the wyvern's age
+                    .eyeHeight(1.2F)
+                    .passengerAttachments(1.35F)
+                    .clientTrackingRange(10)
+                    .build(Menagerie.id("wyvern").toString()));
+
+    public static final EntityType<WyvernEgg> WYVERN_EGG = Registry.register(BuiltInRegistries.ENTITY_TYPE, Menagerie.id("wyvern_egg"),
+            EntityType.Builder.<WyvernEgg>of(WyvernEgg::new, MobCategory.MISC)
+                    .sized(0.4F, 0.45F)
+                    .clientTrackingRange(8)
+                    .build(Menagerie.id("wyvern_egg").toString()));
+
+    public static final Item WYVERN_SPAWN_EGG = ModItems.register("wyvern_spawn_egg",
+            new SpawnEggItem(WYVERN, 0x3E6B2F, 0xB8A13A, new Item.Properties()));
 
     /** One entity type per big cat species (lion, tiger, ... and the hybrids), like the original. */
     public static final Map<BigCatSpecies, EntityType<BigCat>> BIG_CATS = new EnumMap<>(BigCatSpecies.class);
@@ -85,6 +104,18 @@ public final class ModEntities {
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_SAVANNA)
                         .or(BiomeSelectors.includeByKey(Biomes.SNOWY_SLOPES, Biomes.GROVE, Biomes.SNOWY_TAIGA)),
                 MobCategory.CREATURE, BIG_CATS.get(BigCatSpecies.LEOPARD), 3, 1, 1);
+
+        FabricDefaultAttributeRegistry.register(WYVERN, Wyvern.createAttributes());
+        SpawnPlacements.register(WYVERN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules);
+        // New: until the Wyvern Lair exists, rare wild wyverns live in the biomes their colours suggest.
+        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_JUNGLE)
+                        .or(BiomeSelectors.tag(BiomeTags.IS_BADLANDS))
+                        .or(BiomeSelectors.tag(BiomeTags.IS_SAVANNA))
+                        .or(BiomeSelectors.tag(BiomeTags.IS_MOUNTAIN))
+                        .or(BiomeSelectors.includeByKey(Biomes.SWAMP, Biomes.MANGROVE_SWAMP, Biomes.DESERT,
+                                Biomes.STONY_SHORE, Biomes.ICE_SPIKES, Biomes.WINDSWEPT_HILLS)),
+                MobCategory.CREATURE, WYVERN, 1, 1, 1);
 
         // Wild horses on the plains and meadows, zebras on the savanna (breed is picked in finalizeSpawn).
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW)

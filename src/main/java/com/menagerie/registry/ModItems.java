@@ -1,6 +1,7 @@
 package com.menagerie.registry;
 
 import com.menagerie.Menagerie;
+import com.menagerie.entity.wyvern.WyvernEggItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -42,6 +43,9 @@ public final class ModItems {
     public static final Item ESSENCE_OF_UNDEAD = register("essence_of_undead", new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
     public static final Item ESSENCE_OF_LIGHT = register("essence_of_light", new Item(new Item.Properties().stacksTo(16).rarity(Rarity.RARE)));
     public static final Item UNICORN_HORN = register("unicorn_horn", new Item(new Item.Properties().rarity(Rarity.RARE)));
+
+    // --- Wyverns ---
+    public static final Item WYVERN_EGG = register("wyvern_egg", new WyvernEggItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 
     private ModItems() {
     }

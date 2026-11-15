@@ -42,6 +42,21 @@ original's open-source (GPL-3.0) code, models, textures and sounds. See [CREDITS
 - Spawns: lions on the savanna, tigers and panthers in jungles, leopards on the savanna, snow leopards on snowy slopes,
   groves and snowy taiga.
 
+### Wyverns
+- **12 kinds** with the original model, animation and textures: jungle, swamp, desert, sun, arctic, cave, mountain
+  and sea wyverns, the huge **mother wyvern**, and the **undead, light and dark** wyverns that mothers transform into
+  (give a tamed mother essence of undead, light or darkness).
+- **Eggs**: wild wyverns sometimes drop an egg of their kind (mothers often). Set an egg down and it hatches after about
+  half a minute into a hatchling that is **tame to the nearest player** and grows up over about twenty minutes.
+  Essence of light makes a grown, tamed wyvern lay an egg. New: eggs are tinted by kind.
+- **Wild wyverns** take off and land at random, swoop at their targets, hunt small animals and bite players
+  (sometimes with poison).
+- **Tamed wyverns** (once grown): saddle to ride, iron/gold/diamond horse armor shown as armor plates, a chest
+  (sneak + use), whip or empty hand to sit, raw meat or fish to heal. They fly back to an owner who wanders off.
+- **Flying** (new): a ridden wyvern flies where you look while you hold forward; jump climbs; let go to glide.
+- Spawns (new, until the Wyvern Lair is ported): rare wild wyverns in the biome matching their colours
+  (jungle, swamp, desert, savanna/badlands, mountains, snowy peaks, stony shores).
+
 ## Building
 `./gradlew build` (Java 21). The jar is written to `build/libs/`.
 

@@ -3,6 +3,8 @@ package com.menagerie.registry;
 import com.menagerie.Menagerie;
 import com.menagerie.entity.bigcat.BigCatSpecies;
 import com.menagerie.entity.horse.HorseBreeds;
+import com.menagerie.entity.wyvern.Wyvern;
+import com.menagerie.entity.wyvern.WyvernEggItem;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
@@ -23,6 +25,13 @@ public final class ModCreativeTab {
                         // one spawn egg per horse breed
                         for (int breed : HorseBreeds.ALL) {
                             output.accept(horseEgg(breed));
+                        }
+                        // a wyvern egg and a spawn egg for every kind of wyvern
+                        for (int kind = 1; kind <= Wyvern.KINDS; kind++) {
+                            output.accept(WyvernEggItem.stackOf(kind));
+                        }
+                        for (int kind = 1; kind <= Wyvern.KINDS; kind++) {
+                            output.accept(wyvernSpawnEgg(kind));
                         }
                         // one spawn egg per big cat variant (lionesses, white tigers, winged lions...)
                         for (BigCatSpecies species : BigCatSpecies.values()) {
@@ -59,6 +68,18 @@ public final class ModCreativeTab {
         egg.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
         egg.set(DataComponents.ITEM_NAME, Component.translatable("item.menagerie.horse_spawn_egg.breed",
                 Component.translatable("entity.menagerie." + species.id + "." + species.variantKey(variant))));
+        return egg;
+    }
+
+    public static ItemStack wyvernSpawnEgg(int kind) {
+        ItemStack egg = new ItemStack(ModEntities.WYVERN_SPAWN_EGG);
+        CompoundTag tag = new CompoundTag();
+        tag.putString("id", Menagerie.id("wyvern").toString());
+        tag.putInt("Kind", kind);
+        tag.putInt("Growth", Wyvern.maxAge(kind));
+        egg.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
+        egg.set(DataComponents.ITEM_NAME, Component.translatable("item.menagerie.horse_spawn_egg.breed",
+                Component.translatable("entity.menagerie.wyvern." + Wyvern.kindKey(kind))));
         return egg;
     }
 
