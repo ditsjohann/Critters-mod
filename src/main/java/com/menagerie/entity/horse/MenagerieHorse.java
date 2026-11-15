@@ -296,6 +296,13 @@ public class MenagerieHorse extends AbstractChestedHorse {
             }
         }
 
+        if (isTamed() && !isBaby() && isBodyArmorItem(stack) && !isWearingBodyArmor()) {
+            if (!client) {
+                equipBodyArmor(player, stack);
+            }
+            return InteractionResult.sidedSuccess(client);
+        }
+
         if (stack.is(Items.CHEST) && !HorseBreeds.isBagger(t)) {
             return InteractionResult.PASS; // only donkeys, mules, zonkies, pegasi and fairies carry bags
         }
@@ -449,11 +456,6 @@ public class MenagerieHorse extends AbstractChestedHorse {
     }
 
     // ------------------------------------------------------------------ armor and bags
-
-    @Override
-    public boolean canWearBodyArmor() {
-        return true;
-    }
 
     @Override
     public boolean isBodyArmorItem(ItemStack stack) {

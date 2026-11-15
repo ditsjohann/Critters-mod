@@ -2,6 +2,3 @@ accessWidener v2 named
 
 # Natural spawn rules for our creatures
 accessible method net/minecraft/world/entity/SpawnPlacements register (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
-
-# Flying mounts climb while their rider holds the jump key
-accessible field net/minecraft/world/entity/LivingEntity jumping Z
