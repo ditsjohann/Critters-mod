@@ -1,21 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "newmod",
+  "id": "menagerie",
   "version": "${version}",
-  "name": "New Mod",
-  "description": "",
-  "authors": ["ditsjohann"],
-  "license": "MIT",
+  "name": "Menagerie",
+  "description": "A reboot of DrZhark's classic Mo' Creatures for modern Minecraft: magical horses, big cats, kitties, wyverns, ogres, werewolves and dozens more creatures.",
+  "authors": [
+    "ditsjohann"
+  ],
+  "license": "GPL-3.0-only",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.newmod.NewMod"],
-    "client": ["com.newmod.client.NewModClient"]
+    "main": [
+      "com.menagerie.Menagerie"
+    ],
+    "client": [
+      "com.menagerie.client.MenagerieClient"
+    ]
   },
-  "accessWidener": "newmod.accesswidener",
+  "accessWidener": "menagerie.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.0",
     "minecraft": "~1.21.1",
     "java": ">=21",
     "fabric-api": "*"
-  }
+  },
+  "contributors": [
+    "DrZhark (original Mo' Creatures code, models, textures and sounds)",
+    "The Mo' Creatures team"
+  ]
 }

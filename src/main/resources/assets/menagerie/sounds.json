@@ -1,0 +1,1101 @@
+{
+	"appear" : {
+		"category" : "neutral",
+		"sounds" : [ "menagerie:appear" ]
+	},
+	"appearmagic" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:appearmagic"
+		]
+	},
+	"armoroff" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:armoroff"
+		]
+	},
+	"armorput" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:armorput"
+		]
+	},
+	"beardeath" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:beardeath"
+		]
+	},
+	"beargrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:beargrunt1",
+			"menagerie:beargrunt2",
+			"menagerie:beargrunt3",
+			"menagerie:beargrunt4",
+			"menagerie:beargrunt5"
+		]
+	},
+	"bearhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:bearhurt1",
+			"menagerie:bearhurt2"
+		]
+	},
+	"bee" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:bee1",
+			"menagerie:bee2",
+			"menagerie:bee3"
+		]
+	},
+	"beeupset" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:beeupset"
+		]
+	},
+	"birdblack" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdblack1",
+			"menagerie:birdblack2",
+			"menagerie:birdblack3"
+		]
+	},
+	"birdblue" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdblue1",
+			"menagerie:birdblue2",
+			"menagerie:birdblue3",
+			"menagerie:birdblue4"
+		]
+	},
+	"birdgreen" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdgreen1",
+			"menagerie:birdgreen2",
+			"menagerie:birdgreen3"
+		]
+	},
+	"birdred" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdred1",
+			"menagerie:birdred2",
+			"menagerie:birdred3",
+			"menagerie:birdred4",
+			"menagerie:birdred5"
+		]
+	},
+	"birdwhite" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdwhite"
+		]
+	},
+	"birdyellow" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:birdyellow1",
+			"menagerie:birdyellow2",
+			"menagerie:birdyellow3",
+			"menagerie:birdyellow4",
+			"menagerie:birdyellow5"
+		]
+	},
+	"cricket" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cricket"
+		]
+	},
+	"cricketfly" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cricketfly"
+		]
+	},
+	"crocdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crocdying"
+		]
+	},
+	"crocgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crocgrunt1",
+			"menagerie:crocgrunt2",
+			"menagerie:crocgrunt3"
+		]
+	},
+	"crochurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crochurt1",
+			"menagerie:crochurt2",
+			"menagerie:crochurt3"
+		]
+	},
+	"crocjawsnap" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crocjawsnap1",
+			"menagerie:crocjawsnap2"
+		]
+	},
+	"crocresting" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crocresting1",
+			"menagerie:crocresting2"
+		]
+	},
+	"crocroll" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:crocroll"
+		]
+	},
+	"cub" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cub"
+		]
+	},
+	"cubdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cubdying"
+		]
+	},
+	"cubgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cubgrunt1",
+			"menagerie:cubgrunt2",
+			"menagerie:cubgrunt3",
+			"menagerie:cubgrunt4",
+			"menagerie:cubgrunt5"
+		]
+	},
+	"cubhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:cubhurt1",
+			"menagerie:cubhurt2",
+			"menagerie:cubhurt3"
+		]
+	},
+	"deerbgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:deerbgrunt"
+		]
+	},
+	"deerdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:deerdying"
+		]
+	},
+	"deerfgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:deerfgrunt"
+		]
+	},
+	"deerhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:deerhurt"
+		]
+	},
+	"destroy" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:destroy"
+		]
+	},
+	"dolphin" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:dolphin1",
+			"menagerie:dolphin2",
+			"menagerie:dolphin3",
+			"menagerie:dolphin4",
+			"menagerie:dolphin5",
+			"menagerie:dolphin6"
+		]
+	},
+	"dolphindying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:dolphindying1",
+			"menagerie:dolphindying2",
+			"menagerie:dolphindying3"
+		]
+	},
+	"dolphinhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:dolphinhurt1",
+			"menagerie:dolphinhurt2"
+		]
+	},
+	"dolphinupset" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:dolphinupset"
+		]
+	},
+	"donkeydying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:donkeydying"
+		]
+	},
+	"donkeygrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:donkeygrunt1",
+			"menagerie:donkeygrunt2"
+		]
+	},
+	"donkeyhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:donkeyhurt"
+		]
+	},
+	"dragonfly" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:dragonfly"
+		]
+	},
+	"drinking" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:drinking"
+		]
+	},
+	"duck" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:duck1",
+			"menagerie:duck2",
+			"menagerie:duck3"
+		]
+	},
+	"duckhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:duckhurt1",
+			"menagerie:duckhurt2"
+		]
+	},
+	"duckplop" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:duckplop"
+		]
+	},
+	"eating" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:eating"
+		]
+	},
+	"elephantcalf" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:elephantcalf1",
+			"menagerie:elephantcalf2"
+		]
+	},
+	"elephantdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:elephantdying"
+		]
+	},
+	"elephantgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:elephantgrunt1",
+			"menagerie:elephantgrunt2",
+			"menagerie:elephantgrunt3",
+			"menagerie:elephantgrunt4",
+			"menagerie:elephantgrunt5",
+			"menagerie:elephantgrunt6",
+			"menagerie:elephantgrunt7",
+			"menagerie:elephantgrunt8"
+		]
+	},
+	"elephanthurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:elephanthurt1",
+			"menagerie:elephanthurt2"
+		]
+	},
+	"firefly" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:firefly"
+		]
+	},
+	"fly" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:fly"
+		]
+	},
+	"foxcall" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:foxcall1",
+			"menagerie:foxcall2",
+			"menagerie:foxcall3",
+			"menagerie:foxcall4",
+			"menagerie:foxcall5"
+		]
+	},
+	"foxdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:foxdying"
+		]
+	},
+	"foxhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:foxhurt1",
+			"menagerie:foxhurt2"
+		]
+	},
+	"goatdigg" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatdigg"
+		]
+	},
+	"goatdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatdying"
+		]
+	},
+	"goateating" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goateating"
+		]
+	},
+	"goatfemale" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatfemale"
+		]
+	},
+	"goatgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatgrunt"
+		]
+	},
+	"goathurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goathurt"
+		]
+	},
+	"goatkid" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatkid"
+		]
+	},
+	"goatsmack" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:goatsmack"
+		]
+	},
+	"golemattach" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemattach"
+		]
+	},
+	"golemdying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemdying"
+		]
+	},
+	"golemexplode" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemexplode"
+		]
+	},
+	"golemgrunt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemgrunt1",
+			"menagerie:golemgrunt2"
+		]
+	},
+	"golemhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemhurt"
+		]
+	},
+	"golemshoot" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemshoot1",
+			"menagerie:golemshoot2"
+		]
+	},
+	"golemwalk" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:golemwalk"
+		]
+	},
+	"horsedying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsedying"
+		]
+	},
+	"horsedyingghost" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsedyingghost"
+		]
+	},
+	"horsedyingundead" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsedyingundead"
+		]
+	},
+	"horsegrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsegrunt1",
+			"menagerie:horsegrunt2",
+			"menagerie:horsegrunt3"
+		]
+	},
+	"horsegruntghost" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsegruntghost1",
+			"menagerie:horsegruntghost2",
+			"menagerie:horsegruntghost3"
+		]
+	},
+	"horsegruntundead" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsegruntundead1",
+			"menagerie:horsegruntundead2"
+		]
+	},
+	"horsehurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsehurt1",
+			"menagerie:horsehurt2"
+		]
+	},
+	"horsehurtghost" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsehurtghost"
+		]
+	},
+	"horsehurtundead" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsehurtundead"
+		]
+	},
+	"horsemad" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsemad"
+		]
+	},
+	"horsemadghost" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsemadghost"
+		]
+	},
+	"horsemadundead" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:horsemadundead"
+		]
+	},
+	"kittendying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittendying"
+		]
+	},
+	"kittengrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittengrunt"
+		]
+	},
+	"kittenhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittenhurt1",
+			"menagerie:kittenhurt2"
+		]
+	},
+	"kittydying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittydying1",
+			"menagerie:kittydying2"
+		]
+	},
+	"kittyeatingf" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittyeatingf"
+		]
+	},
+	"kittyeatingm" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittyeatingm"
+		]
+	},
+	"kittyfood" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittyfood1",
+			"menagerie:kittyfood2",
+			"menagerie:kittyfood3",
+			"menagerie:kittyfood4"
+		]
+	},
+	"kittygrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittygrunt1",
+			"menagerie:kittygrunt2"
+		]
+	},
+	"kittyhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittyhurt1",
+			"menagerie:kittyhurt2",
+			"menagerie:kittyhurt3"
+		]
+	},
+	"kittypurr" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittypurr1",
+			"menagerie:kittypurr2"
+		]
+	},
+	"kittytrapped" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittytrapped"
+		]
+	},
+	"kittyupset" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:kittyupset1",
+			"menagerie:kittyupset2",
+			"menagerie:kittyupset3"
+		]
+	},
+	"liondeath" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:liondeath"
+		]
+	},
+	"liongrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:liongrunt1",
+			"menagerie:liongrunt2",
+			"menagerie:liongrunt3"
+		]
+	},
+	"lionhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:lionhurt1",
+			"menagerie:lionhurt2",
+			"menagerie:lionhurt3",
+			"menagerie:lionhurt4"
+		]
+	},
+	"micedying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:micedying1",
+			"menagerie:micedying2"
+		]
+	},
+	"micegrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:micegrunt1",
+			"menagerie:micegrunt2",
+			"menagerie:micegrunt3"
+		]
+	},
+	"micehurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:micehurt1",
+			"menagerie:micehurt2",
+			"menagerie:micehurt3"
+		]
+	},
+	"ogre" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:ogre1",
+			"menagerie:ogre2",
+			"menagerie:ogre3"
+		]
+	},
+	"ogredying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:ogredying"
+		]
+	},
+	"ogrehurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:ogrehurt"
+		]
+	},
+	"ostrichchick" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ostrichchick"
+		]
+	},
+	"ostrichdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ostrichdying"
+		]
+	},
+	"ostrichgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ostrichgrunt1",
+			"menagerie:ostrichgrunt2"
+		]
+	},
+	"ostrichhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ostrichhurt1",
+			"menagerie:ostrichhurt2"
+		]
+	},
+	"pegasus" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:pegasus"
+		]
+	},
+	"pouringfood" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:pouringfood"
+		]
+	},
+	"pouringmilk" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:pouringmilk"
+		]
+	},
+	"rabbitdeath" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:rabbitdeath"
+		]
+	},
+	"rabbithurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:rabbithurt1",
+			"menagerie:rabbithurt2"
+		]
+	},
+	"rabbitland" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:rabbitland"
+		]
+	},
+	"rabbitlift" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:rabbitlift"
+		]
+	},
+	"raccoondying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:raccoondying"
+		]
+	},
+	"raccoongrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:raccoongrunt1",
+			"menagerie:raccoongrunt2",
+			"menagerie:raccoongrunt3",
+			"menagerie:raccoongrunt4"
+		]
+	},
+	"raccoonhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:raccoonhurt1",
+			"menagerie:raccoonhurt2"
+		]
+	},
+	"ratdying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ratdying"
+		]
+	},
+	"ratgrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:ratgrunt1",
+			"menagerie:ratgrunt2",
+			"menagerie:ratgrunt3",
+			"menagerie:ratgrunt4"
+		]
+	},
+	"rathurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:rathurt1",
+			"menagerie:rathurt2"
+		]
+	},
+	"roping" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:roping"
+		]
+	},
+	"scorpionclaw" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:scorpionclaw"
+		]
+	},
+	"scorpiondying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:scorpiondying"
+		]
+	},
+	"scorpiongrunt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:scorpiongrunt1",
+			"menagerie:scorpiongrunt2",
+			"menagerie:scorpiongrunt3",
+			"menagerie:scorpiongrunt4"
+		]
+	},
+	"scorpionhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:scorpionhurt"
+		]
+	},
+	"scorpionsting" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:scorpionsting1",
+			"menagerie:scorpionsting2"
+		]
+	},
+	"shuffling" : {
+		"category" : "music",
+		"sounds" : [
+		    {
+			    "name" : "menagerie:music/shuffling",
+			    "stream": true
+			}
+		]
+	},
+	"snakedying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakedying"
+		]
+	},
+	"snakehiss" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakehiss1",
+			"menagerie:snakehiss2"
+		]
+	},
+	"snakehurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakehurt"
+		]
+	},
+	"snakerattle" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakerattle1",
+			"menagerie:snakerattle2"
+		]
+	},
+	"snakesnap" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakesnap"
+		]
+	},
+	"snakeswim" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakeswim"
+		]
+	},
+	"snakeupset" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:snakeupset1",
+			"menagerie:snakeupset2"
+		]
+	},
+	"transform" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:transform"
+		]
+	},
+	"turkey" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:turkey1",
+			"menagerie:turkey2"
+		]
+	},
+	"turkeyhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:turkeyhurt"
+		]
+	},
+	"turtledying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:turtledying"
+		]
+	},
+	"turtlehissing" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:turtlehissing"
+		]
+	},
+	"turtlehurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:turtlehurt"
+		]
+	},
+	"vanish" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:vanish"
+		]
+	},
+	"werehumandying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:werehumandying1",
+			"menagerie:werehumandying2"
+		]
+	},
+	"werehumanhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:werehumanhurt1",
+			"menagerie:werehumanhurt2"
+		]
+	},
+	"weretransform" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:weretransform1",
+			"menagerie:weretransform2",
+			"menagerie:weretransform3"
+		]
+	},
+	"werewolfdying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:werewolfdying1",
+			"menagerie:werewolfdying2"
+		]
+	},
+	"werewolfgrunt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:werewolfgrunt1",
+			"menagerie:werewolfgrunt2",
+			"menagerie:werewolfgrunt3",
+			"menagerie:werewolfgrunt4"
+		]
+	},
+	"werewolfhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:werewolfhurt1",
+			"menagerie:werewolfhurt2"
+		]
+	},
+	"whip" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:whip"
+		]
+	},
+	"wingflap" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wingflap"
+		]
+	},
+	"wolfdeath" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wolfdeath"
+		]
+	},
+	"wolfgrunt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wolfgrunt1",
+			"menagerie:wolfgrunt2",
+			"menagerie:wolfgrunt3"
+		]
+	},
+	"wolfhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wolfhurt1",
+			"menagerie:wolfhurt2"
+		]
+	},
+	"wraith" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wraith1",
+			"menagerie:wraith2",
+			"menagerie:wraith3"
+		]
+	},
+	"wraithdying" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wraithdying1",
+			"menagerie:wraithdying2"
+		]
+	},
+	"wraithhurt" : {
+		"category" : "hostile",
+		"sounds" : [
+			"menagerie:wraithhurt1",
+			"menagerie:wraithhurt2"
+		]
+	},
+	"wyverndying" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wyverndying"
+		]
+	},
+	"wyverngrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wyverngrunt1",
+			"menagerie:wyverngrunt2",
+			"menagerie:wyverngrunt3",
+			"menagerie:wyverngrunt4",
+			"menagerie:wyverngrunt5"
+		]
+	},
+	"wyvernhurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wyvernhurt1",
+			"menagerie:wyvernhurt2"
+		]
+	},
+	"wyvernpoisoning" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wyvernpoisoning"
+		]
+	},
+	"wyvernwingflap" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:wyvernwingflap"
+		]
+	},
+	"zebragrunt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:zebragrunt1",
+			"menagerie:zebragrunt2"
+		]
+	},
+	"zebrahurt" : {
+		"category" : "neutral",
+		"sounds" : [
+			"menagerie:zebrahurt"
+		]
+	}
+}

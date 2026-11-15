@@ -14,12 +14,12 @@ repositories {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/newmod.accesswidener")
+    accessWidenerPath = file("src/main/resources/menagerie.accesswidener")
 
     splitEnvironmentSourceSets()
 
     mods {
-        "newmod" {
+        "menagerie" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }
