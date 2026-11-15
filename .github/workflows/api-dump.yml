@@ -1,12 +1,13 @@
 name: API dump
 
 # Prints the real Minecraft 1.21.1 (Mojang-mapped) signatures of the classes listed in
-# tools/api-classes.txt, so code can be checked against the actual API.
+# tools/api-classes.txt (only lines matching tools/api-grep.txt), so code can be checked against the actual API.
 on:
   workflow_dispatch:
   push:
     paths:
       - tools/api-classes.txt
+      - tools/api-grep.txt
 
 jobs:
   dump:
@@ -29,5 +30,6 @@ jobs:
           grep -v '^#' tools/api-classes.txt | while read -r cls; do
             [ -z "$cls" ] && continue
             echo "=== $cls"
-            javap -cp "$JARS" -p "$cls" 2>&1 | grep -v '^Compiled from' || true
+            PATTERN=$(grep -v '^#' tools/api-grep.txt | paste -sd'|')
+            javap -cp "$JARS" -p "$cls" 2>&1 | grep -v '^Compiled from' | grep -E "class |interface |$PATTERN" || true
           done

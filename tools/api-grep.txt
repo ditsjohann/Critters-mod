@@ -1,0 +1,16 @@
+# Regex alternatives (one per line); the API dump prints only signatures matching one of them.
+[Aa]rmor
+[Ss]addle
+[Cc]hest
+Goal\(
+[Ii]nventory
+twoRows
+Ridden|ControllingPassenger|FlyingSpeed|Jump|jumping
+[Tt]emper|[Tt]ame
+AngrySound|EatingSound
+DefaultDimensions|AgeScale
+createTag|fromTag|fromItemList|createItemList
+isFood|InLove|canMate|BreedOffspring|ageUp
+OrderedToSit|SittingPose
+PassengerAttachment|positionRider
+finalizeSpawn|DeathLoot|dropEquipment|causeFallDamage|createAttributes|createBase|doHurtTarget
