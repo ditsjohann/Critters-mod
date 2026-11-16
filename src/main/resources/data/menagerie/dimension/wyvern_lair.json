@@ -1,0 +1,11 @@
+{
+  "type": "menagerie:wyvern_lair",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "menagerie:wyvern_lair",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "menagerie:wyvern_lair"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+# Server console commands run by the smoke test once the server has started (one per line).
+forceload add -16 -16 16 16
+execute in menagerie:wyvern_lair run forceload add -48 -48 48 48
+summon menagerie:horse 0 120 0 {Breed:39}
+summon menagerie:horse 2 120 0 {Breed:50}
+summon menagerie:horse 4 120 0 {Breed:60}
+summon menagerie:lion 0 120 4 {Variant:2}
+summon menagerie:tiger 2 120 4
+summon menagerie:panther 4 120 4
+summon menagerie:leopard 6 120 4
+summon menagerie:liger 8 120 4
+summon menagerie:wyvern 0 120 8 {Kind:5,Growth:180}
+summon menagerie:wyvern 4 120 8 {Kind:1}
+summon menagerie:wyvern_egg 8 120 8 {Kind:3}
+execute in menagerie:wyvern_lair run summon menagerie:wyvern 0 100 0

@@ -58,3 +58,8 @@ jar {
         rename { "${it}_${inputs.properties.archivesName}" }
     }
 }
+
+// Lets the smoke-test workflow type commands into the dev server.
+tasks.named('runServer') {
+    standardInput = System.in
+}
