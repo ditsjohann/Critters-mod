@@ -46,8 +46,10 @@ jobs:
           exec 3>&-
           wait || true
           echo "================ problems ================"
-          grep -nE 'ERROR|Exception|Caused by|Failed to|Couldn.t|Unknown|WARN.*(menagerie|Menagerie)' /tmp/server.log | grep -v 'Unknown or incomplete command' | head -150 || true
+          # "No data fixer registered" is logged for every modded entity in a development run; it is harmless.
+          grep -v 'No data fixer registered' /tmp/server.log > /tmp/server-filtered.log
+          grep -nE 'ERROR|Exception|Caused by|Failed to|Couldn.t|Unknown|WARN.*(menagerie|Menagerie)' /tmp/server-filtered.log | grep -v 'Unknown or incomplete command' | head -150 || true
           echo "================ summary ================"
           grep -nE 'Done \(|Summoned|Killed|Added ticket|Saving|SERVER EXITED' /tmp/server.log | head -60 || true
           grep -q 'Done (' /tmp/server.log || { echo "Server did not start"; tail -120 /tmp/server.log; exit 1; }
-          if grep -qE 'ERROR|Exception' /tmp/server.log; then exit 1; fi
+          if grep -qE 'ERROR|Exception' /tmp/server-filtered.log; then exit 1; fi

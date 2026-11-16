@@ -54,8 +54,17 @@ original's open-source (GPL-3.0) code, models, textures and sounds. See [CREDITS
 - **Tamed wyverns** (once grown): saddle to ride, iron/gold/diamond horse armor shown as armor plates, a chest
   (sneak + use), whip or empty hand to sit, raw meat or fish to heal. They fly back to an owner who wanders off.
 - **Flying** (new): a ridden wyvern flies where you look while you hold forward; jump climbs; let go to glide.
-- Spawns (new, until the Wyvern Lair is ported): rare wild wyverns in the biome matching their colours
+- Spawns: wyverns live in the Wyvern Lair (below); new: rare wild wyverns also live in the biome matching their colours
   (jungle, swamp, desert, savanna/badlands, mountains, snowy peaks, stony shores).
+
+### The Wyvern Lair
+- A sky dimension of floating islands (as in the original) built from the original's **lair grass, dirt and stone**,
+  with **wyvern-wood trees** (including the original's giant branching trees), lair tall grass, teal fog and sky.
+- Wild wyverns of every kind live there, **mother wyverns** included, plus rabbits.
+- Reach it with the **Portal Staff** (eye of ender + unicorn horn or essence of light + blaze rod, as in the original).
+  You arrive on a quartz platform at the Lair's centre; use the staff again to go back to where you left.
+  Each trip in costs one use (16 uses). New: you can return from anywhere in the Lair.
+- Lair wood makes planks; logs, planks and leaves work with vanilla recipes and tools.
 
 ## Building
 `./gradlew build` (Java 21). The jar is written to `build/libs/`.
@@ -63,7 +72,9 @@ original's open-source (GPL-3.0) code, models, textures and sounds. See [CREDITS
 Every push is also built by GitHub Actions (`.github/workflows/build.yml`); the jar is attached to each run as
 the `menagerie` artifact. `.github/workflows/api-dump.yml` prints real Minecraft 1.21.1 method signatures for the
 classes in `tools/api-classes.txt`, filtered by `tools/api-grep.txt` (note: the dumped jar already has this mod's
-access widener applied).
+access widener applied). `tools/api-data.txt` lists vanilla data files to print from Minecraft's data generator.
+`.github/workflows/smoke-test.yml` starts a real dedicated server with the mod, generates part of the Wyvern Lair,
+summons the creatures in `tools/smoke-commands.txt`, lets them live, kills them, and fails on errors in the log.
 
 ## Tools
 - `tools/convert_model.py`: converts an original 1.12 model class into 1.21.1 model geometry.
