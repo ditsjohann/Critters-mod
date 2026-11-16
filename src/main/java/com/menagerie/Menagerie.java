@@ -1,6 +1,7 @@
 package com.menagerie;
 
 import com.menagerie.event.HeartDrops;
+import com.menagerie.registry.ModBlocks;
 import com.menagerie.registry.ModCreativeTab;
 import com.menagerie.registry.ModEntities;
 import com.menagerie.registry.ModItems;
@@ -23,6 +24,7 @@ public class Menagerie implements ModInitializer {
     public void onInitialize() {
         ModSounds.init();
         ModItems.init();
+        ModBlocks.init();
         ModEntities.init();
         ModCreativeTab.init();
         HeartDrops.init();

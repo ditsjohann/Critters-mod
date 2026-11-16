@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "menagerie:wyvern_log"
+    }
+  ],
+  "result": {
+    "id": "menagerie:wyvern_planks",
+    "count": 4
+  }
+}

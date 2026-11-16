@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "menagerie:block/wood_planks_wyvern_lair"
+  }
+}

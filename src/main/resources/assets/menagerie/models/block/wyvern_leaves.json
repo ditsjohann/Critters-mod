@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "menagerie:block/leaves_wyvern_lair"
+  }
+}

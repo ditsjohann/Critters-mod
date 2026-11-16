@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "menagerie:block/grass_top_wyvern_lair",
+    "side": "menagerie:block/grass_side_wyvern_lair",
+    "bottom": "menagerie:block/dirt_wyvern_lair"
+  }
+}

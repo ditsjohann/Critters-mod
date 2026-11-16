@@ -1,3 +1,7 @@
 # Vanilla generated data files to print (paths inside the data generator output).
 data/minecraft/worldgen/noise_settings/floating_islands.json
-data/minecraft/dimension_type/the_end.json
+data/minecraft/worldgen/biome/plains.json
+data/minecraft/worldgen/configured_feature/oak.json
+data/minecraft/worldgen/placed_feature/trees_plains.json
+data/minecraft/worldgen/configured_feature/patch_grass.json
+data/minecraft/worldgen/placed_feature/patch_grass_plain.json

@@ -45,6 +45,7 @@ jobs:
             grep -v '^#' tools/api-data.txt | while read -r f; do
               [ -z "$f" ] && continue
               echo "=== $f"
-              cat "/tmp/gen/out/$f" || echo "(missing)"
+              # long surface rules are left out to keep the log readable
+              jq 'if type == "object" and has("surface_rule") then .surface_rule = "(omitted)" else . end' "/tmp/gen/out/$f" || echo "(missing)"
             done
           fi

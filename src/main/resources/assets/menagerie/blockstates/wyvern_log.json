@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "menagerie:block/wyvern_log"
+    },
+    "axis=z": {
+      "model": "menagerie:block/wyvern_log_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "menagerie:block/wyvern_log_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

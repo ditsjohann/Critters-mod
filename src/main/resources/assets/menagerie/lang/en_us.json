@@ -129,5 +129,15 @@
   "entity.menagerie.wyvern.sea": "Sea Wyvern",
   "item.menagerie.wyvern_egg": "Wyvern Egg",
   "item.menagerie.wyvern_egg.kind": "%s Egg",
-  "item.menagerie.wyvern_spawn_egg": "Wyvern Spawn Egg"
+  "item.menagerie.wyvern_spawn_egg": "Wyvern Spawn Egg",
+  "block.menagerie.wyvern_grass": "Wyvern Lair Grass",
+  "block.menagerie.wyvern_dirt": "Wyvern Lair Dirt",
+  "block.menagerie.wyvern_stone": "Wyvern Lair Stone",
+  "block.menagerie.wyvern_log": "Wyvern Lair Log",
+  "block.menagerie.wyvern_planks": "Wyvern Lair Planks",
+  "block.menagerie.wyvern_leaves": "Wyvern Lair Leaves",
+  "block.menagerie.wyvern_tall_grass": "Wyvern Lair Tall Grass",
+  "item.menagerie.portal_staff": "Portal Staff",
+  "message.menagerie.portal_staff.no_lair": "The Wyvern Lair could not be found",
+  "biome.menagerie.wyvern_lair": "Wyvern Lair"
 }

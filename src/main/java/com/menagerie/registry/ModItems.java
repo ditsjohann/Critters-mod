@@ -2,6 +2,7 @@ package com.menagerie.registry;
 
 import com.menagerie.Menagerie;
 import com.menagerie.entity.wyvern.WyvernEggItem;
+import com.menagerie.item.PortalStaffItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -45,6 +46,7 @@ public final class ModItems {
     public static final Item UNICORN_HORN = register("unicorn_horn", new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     // --- Wyverns ---
+    public static final Item PORTAL_STAFF = register("portal_staff", new PortalStaffItem(new Item.Properties().durability(16).rarity(Rarity.EPIC)));
     public static final Item WYVERN_EGG = register("wyvern_egg", new WyvernEggItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 
     private ModItems() {
