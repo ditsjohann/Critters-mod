@@ -9,7 +9,10 @@ import com.menagerie.client.render.WyvernRenderer;
 import com.menagerie.entity.wyvern.Wyvern;
 import com.menagerie.entity.wyvern.WyvernEggItem;
 import com.menagerie.registry.ModItems;
+import com.menagerie.registry.ModBlocks;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.renderer.RenderType;
 import com.menagerie.client.model.geom.NewHorseGeometry;
 import com.menagerie.client.render.BigCatRenderer;
 import com.menagerie.client.render.MenagerieHorseRenderer;
@@ -33,5 +36,7 @@ public class MenagerieClient implements ClientModInitializer {
         // wyvern eggs are tinted by the kind of wyvern inside
         ColorProviderRegistry.ITEM.register((stack, layer) -> 0xFF000000 | Wyvern.eggColor(WyvernEggItem.kindOf(stack)),
                 ModItems.WYVERN_EGG);
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WYVERN_LEAVES, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WYVERN_TALL_GRASS, RenderType.cutout());
     }
 }

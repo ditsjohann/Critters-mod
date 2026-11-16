@@ -2,6 +2,5 @@
   "parent": "minecraft:block/cross",
   "textures": {
     "cross": "menagerie:block/tall_grass_wyvern_lair"
-  },
-  "render_type": "cutout"
+  }
 }
